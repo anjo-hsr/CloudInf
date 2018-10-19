@@ -22,9 +22,12 @@ def create_application_epgs(connection):
 def __create_static_ports(connection, epg_dn):
     file_path = "./_json_files/tenant/application_profiles/application_epgs/static_ports.json"
 
-    json_array_name = "static_port_array"
     data = json_file_to_data(file_path)
 
-    for element in data[json_array_name]:
+    if "green_epg" in epg_dn:
         post_address = get_post_address(connection.get_https_address(), epg_dn)
-        make_post_request(post_address, connection, element)
+        make_post_request(post_address, connection, data["static_port_green"])
+
+    if "red_epg" in epg_dn:
+        post_address = get_post_address(connection.get_https_address(), epg_dn)
+        make_post_request(post_address, connection, data["static_port_red"])
