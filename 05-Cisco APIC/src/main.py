@@ -6,6 +6,7 @@ from src.fabric.physical_domains import create_physical_domains
 from src.fabric.attachable_access_entity_profiles import attachable_access_entity_profiles
 from src.fabric.leaf_switches.leaf_interfaces_policy_groups import create_policy_groups
 from src.fabric.leaf_switches.leaf_interfaces_profiles import create_leaf_interfaces_profiles
+from src.fabric.leaf_switches.leaf_profiles import create_leaf_profiles
 
 from src.tenant.contract import generate_default_contracts
 from src.tenant.bridge_domains import generate_bridge_domains
@@ -28,6 +29,7 @@ create_physical_domains(connection)
 attachable_access_entity_profiles(connection)
 create_policy_groups(connection)
 create_leaf_interfaces_profiles(connection)
+create_leaf_profiles(connection)
 
 print("Moving to tenant")
 

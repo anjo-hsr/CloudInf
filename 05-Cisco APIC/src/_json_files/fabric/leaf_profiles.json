@@ -1,0 +1,98 @@
+{
+  "leaf_profile_array": [
+    {
+      "infraNodeP": {
+        "attributes": {
+          "dn": "uni/infra/nprof-Group1-Leaf1-Leaf2",
+          "name": "Group1-Leaf1-Leaf2",
+          "rn": "nprof-Group1-Leaf1-Leaf2",
+          "status": "created,modified"
+        },
+        "children": [
+          {
+            "infraLeafS": {
+              "attributes": {
+                "dn": "uni/infra/nprof-Group1-Leaf1-Leaf2/leaves-VPC-typ-range",
+                "type": "range",
+                "name": "VPC",
+                "rn": "leaves-VPC-typ-range",
+                "status": "created"
+              },
+              "children": [
+                {
+                  "infraNodeBlk": {
+                    "attributes": {
+                      "dn": "uni/infra/nprof-Group1-Leaf1-Leaf2/leaves-VPC-typ-range/nodeblk-6f945cf30eac867c",
+                      "from_": "101",
+                      "to_": "102",
+                      "name": "6f945cf30eac867c",
+                      "rn": "nodeblk-6f945cf30eac867c",
+                      "status": "created"
+                    },
+                    "children": []
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "infraRsAccPortP": {
+              "attributes": {
+                "tDn": "uni/infra/accportprof-Group1-INTPROFILE-GREEN",
+                "status": "created,modified"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "infraNodeP": {
+        "attributes": {
+          "dn": "uni/infra/nprof-Group1-Leaf2",
+          "name": "Group1-Leaf2",
+          "rn": "nprof-Group1-Leaf2",
+          "status": "created,modified"
+        },
+        "children": [
+          {
+            "infraLeafS": {
+              "attributes": {
+                "dn": "uni/infra/nprof-Group1-Leaf2/leaves-VPC-typ-range",
+                "type": "range",
+                "name": "Access Port",
+                "rn": "leaves-VPC-typ-range",
+                "status": "created"
+              },
+              "children": [
+                {
+                  "infraNodeBlk": {
+                    "attributes": {
+                      "dn": "uni/infra/nprof-Group1-Leaf2/leaves-VPC-typ-range/nodeblk-a1cf572bf9ce7c0a",
+                      "from_": "102",
+                      "to_": "102",
+                      "name": "a1cf572bf9ce7c0a",
+                      "rn": "nodeblk-a1cf572bf9ce7c0a",
+                      "status": "created"
+                    },
+                    "children": []
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "infraRsAccPortP": {
+              "attributes": {
+                "tDn": "uni/infra/accportprof-Group1-INTPROFILE-RED",
+                "status": "created,modified"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
