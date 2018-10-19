@@ -59,21 +59,21 @@
           {
             "infraLeafS": {
               "attributes": {
-                "dn": "uni/infra/nprof-Group1-Leaf2/leaves-VPC-typ-range",
+                "dn": "uni/infra/nprof-Group1-Leaf2/leaves-access_port-typ-range",
                 "type": "range",
-                "name": "Access Port",
-                "rn": "leaves-VPC-typ-range",
+                "name": "access_port",
+                "rn": "leaves-access_port-typ-range",
                 "status": "created"
               },
               "children": [
                 {
                   "infraNodeBlk": {
                     "attributes": {
-                      "dn": "uni/infra/nprof-Group1-Leaf2/leaves-VPC-typ-range/nodeblk-a1cf572bf9ce7c0a",
+                      "dn": "uni/infra/nprof-Group1-Leaf2/leaves-access_port-typ-range/nodeblk-fe5f498d0ca4437b",
                       "from_": "102",
                       "to_": "102",
-                      "name": "a1cf572bf9ce7c0a",
-                      "rn": "nodeblk-a1cf572bf9ce7c0a",
+                      "name": "fe5f498d0ca4437b",
+                      "rn": "nodeblk-fe5f498d0ca4437b",
                       "status": "created"
                     },
                     "children": []
