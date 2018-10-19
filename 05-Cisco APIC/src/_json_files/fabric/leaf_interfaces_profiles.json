@@ -3,16 +3,16 @@
     {
       "infraAccPortP": {
         "attributes": {
-          "dn": "uni/infra/accportprof-Group1-INTPROILE-GREEN",
-          "name": "Group1-INTPROILE-GREEN",
-          "rn": "accportprof-Group1-INTPROILE-GREEN",
+          "dn": "uni/infra/accportprof-Group1-INTPROFILE-GREEN",
+          "name": "Group1-INTPROFILE-GREEN",
+          "rn": "accportprof-Group1-INTPROFILE-GREEN",
           "status": "created,modified"
         },
         "children": [
           {
             "infraHPortS": {
               "attributes": {
-                "dn": "uni/infra/accportprof-Group1-INTPROILE-GREEN/hports-e1-5-typ-range",
+                "dn": "uni/infra/accportprof-Group1-INTPROFILE-GREEN/hports-e1-5-typ-range",
                 "name": "e1-5",
                 "rn": "hports-e1-5-typ-range",
                 "status": "created,modified"
@@ -21,7 +21,7 @@
                 {
                   "infraPortBlk": {
                     "attributes": {
-                      "dn": "uni/infra/accportprof-Group1-INTPROILE-GREEN/hports-e1-5-typ-range/portblk-block2",
+                      "dn": "uni/infra/accportprof-Group1-INTPROFILE-GREEN/hports-e1-5-typ-range/portblk-block2",
                       "fromPort": "5",
                       "toPort": "5",
                       "name": "block2",

@@ -29,10 +29,10 @@ attachable_access_entity_profiles(connection)
 create_policy_groups(connection)
 create_leaf_interfaces_profiles(connection)
 
-###
+print("Moving to tenant")
+
 # Things in Tenant
-# generate_default_contracts(connection)
-# generate_bridge_domains(connection)
-# generate_application_profiles(connection)
-# create_application_epgs(connection)
-###
+generate_default_contracts(connection)
+generate_bridge_domains(connection)
+generate_application_profiles(connection)
+create_application_epgs(connection)

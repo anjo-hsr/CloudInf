@@ -3,7 +3,7 @@
     {
       "fvRsProv": {
         "attributes": {
-          "tnVzBrCPName": "2greenRed-redGreen",
+          "tnVzBrCPName": "greenRed-redGreen",
           "status": "created,modified"
         },
         "children": [
@@ -22,7 +22,7 @@
     {
       "fvRsCons": {
         "attributes": {
-          "tnVzBrCPName": "2greenRed-redGreen",
+          "tnVzBrCPName": "greenRed-redGreen",
           "status": "created,modified"
         },
         "children": [

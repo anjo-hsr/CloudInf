@@ -15,7 +15,7 @@ def __generate_application_epgs(connection):
         application_epg_dn = application_epg["fvAEPg"]["attributes"]["dn"]
         post_address = get_post_address(connection.get_https_address(), application_epg_dn)
         make_post_request(post_address, connection, application_epg)
-        bind_contracts(connection, application_epg_dn)
+        bind_contracts(connection, post_address)
 
 
 def generate_application_profiles(connection):

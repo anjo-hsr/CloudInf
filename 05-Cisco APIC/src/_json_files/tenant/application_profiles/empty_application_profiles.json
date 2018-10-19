@@ -3,9 +3,9 @@
     {
       "fvAp": {
         "attributes": {
-          "dn": "uni/tn-group1/ap-Test_AP",
-          "name": "Test_AP",
-          "rn": "ap-Test_AP",
+          "dn": "uni/tn-group1/ap-green-red",
+          "name": "green-red",
+          "rn": "ap-green-red",
           "status": "created"
         },
         "children": []

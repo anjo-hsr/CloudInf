@@ -3,17 +3,17 @@
     {
       "vzBrCP": {
         "attributes": {
-          "dn": "uni/tn-group1/brc-2greenRed-redGreen",
-          "name": "2greenRed-redGreen",
+          "dn": "uni/tn-group1/brc-greenRed-redGreen",
+          "name": "greenRed-redGreen",
           "scope": "tenant",
-          "rn": "brc-2greenRed-redGreen",
+          "rn": "brc-greenRed-redGreen",
           "status": "created"
         },
         "children": [
           {
             "vzSubj": {
               "attributes": {
-                "dn": "uni/tn-group1/brc-2greenRed-redGreen/subj-Subject",
+                "dn": "uni/tn-group1/brc-greenRed-redGreen/subj-Subject",
                 "name": "Subject",
                 "rn": "subj-Subject",
                 "status": "created"
@@ -38,17 +38,17 @@
     {
       "vzBrCP": {
         "attributes": {
-          "dn": "uni/tn-group1/brc-2greenRed-blue",
-          "name": "2greenRed-blue",
+          "dn": "uni/tn-group1/brc-greenRed-blue",
+          "name": "greenRed-blue",
           "scope": "tenant",
-          "rn": "brc-2greenRed-blue",
+          "rn": "brc-greenRed-blue",
           "status": "created"
         },
         "children": [
           {
             "vzSubj": {
               "attributes": {
-                "dn": "uni/tn-group1/brc-2greenRed-blue/subj-Subject",
+                "dn": "uni/tn-group1/brc-greenRed-blue/subj-Subject",
                 "name": "Subject",
                 "rn": "subj-Subject",
                 "status": "created"

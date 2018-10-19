@@ -4,8 +4,8 @@
       "physDomP": {
         "attributes": {
           "dn": "uni/phys-Group1-DOMAIN-GREEN",
-          "name": "Group1-DOMAIN-GREEN2",
-          "rn": "phys-Group1-DOMAIN-GREEN2",
+          "name": "Group1-DOMAIN-GREEN",
+          "rn": "phys-Group1-DOMAIN-GREEN",
           "status": "created"
         },
         "children": [

@@ -3,7 +3,7 @@
     {
       "fvnsVlanInstP": {
         "attributes": {
-          "dn": "uni/infra/vlanns-[Group1-VLAN531]-static",
+          "dn": "uni/infra/vlanns-[Group1-VLAN501]-static",
           "name": "Group1-VLAN501",
           "allocMode": "static",
           "rn": "vlanns-[Group1-VLAN501]-static",

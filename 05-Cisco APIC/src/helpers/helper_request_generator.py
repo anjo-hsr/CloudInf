@@ -18,4 +18,8 @@ def make_post_request(post_address, connection, json):
     pprint(response.status_code)
     pprint(response.text)
 
+    if response.status_code == 200:
+        pprint(json)
+        pprint(post_address)
+
     return response
