@@ -14,12 +14,11 @@ def make_post_request(post_address, connection, json):
     response = requests.post(post_address, verify=False, json=json,
                              headers={"APIC-challenge": connection.get_token(),
                                       "Cookie": "APIC-cookie=" + connection.get_cookie()})
-
-    pprint(response.status_code)
     pprint(response.text)
 
-    if response.status_code == 200:
+    if response.status_code == 400:
         pprint(json)
         pprint(post_address)
+    pprint(response.status_code)
 
     return response
