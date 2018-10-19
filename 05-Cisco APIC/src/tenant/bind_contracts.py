@@ -6,7 +6,12 @@ def __bind_contracts_between(connection, post_address):
     with open('./_json_files/tenant/contracts/application_epg_contracts_between.json') as contracts_between_egps_file:
         contracts_between_egps = generate_json_from_file(contracts_between_egps_file)
 
-    for contract_between_egps in contracts_between_egps['application_epg_contracts_between_epgs_array']:
+    if "green_epg" in post_address:
+        contract_between_egps = contracts_between_egps['application_epg_contracts_between_epgs']['provided']
+        make_post_request(post_address, connection, contract_between_egps)
+
+    if "red_epg" in post_address:
+        contract_between_egps = contracts_between_egps['application_epg_contracts_between_epgs']['consumed']
         make_post_request(post_address, connection, contract_between_egps)
 
 
