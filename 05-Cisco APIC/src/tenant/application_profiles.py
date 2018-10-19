@@ -1,6 +1,7 @@
 from src.helpers.helper_json_files import json_file_to_data, json_file_to_post_requests
 from src.helpers.helper_request_generator import get_post_address, make_post_request
 from src.tenant.bind_contracts import bind_contracts
+from src.fabric.physical_domains import bind_physical_domain
 
 
 def __generate_empty_application_profiles(connection):
@@ -16,6 +17,7 @@ def __generate_application_epgs(connection):
         post_address = get_post_address(connection.get_https_address(), application_epg_dn)
         make_post_request(post_address, connection, application_epg)
         bind_contracts(connection, post_address)
+        bind_physical_domain(connection, post_address)
 
 
 def generate_application_profiles(connection):
