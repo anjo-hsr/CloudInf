@@ -1,6 +1,6 @@
 {
-  "application_epg_contracts_between_epgs_array": [
-    {
+  "application_epg_contracts_between_epgs": {
+    "provided": {
       "fvRsProv": {
         "attributes": {
           "tnVzBrCPName": "greenRed-redGreen",
@@ -19,7 +19,7 @@
         ]
       }
     },
-    {
+    "consumed": {
       "fvRsCons": {
         "attributes": {
           "tnVzBrCPName": "greenRed-redGreen",
@@ -38,5 +38,5 @@
         ]
       }
     }
-  ]
+  }
 }
