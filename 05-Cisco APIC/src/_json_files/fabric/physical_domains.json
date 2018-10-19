@@ -19,6 +19,15 @@
               },
               "children": []
             }
+          },
+          {
+            "infraRsVlanNs": {
+              "attributes": {
+                "tDn": "uni/infra/vlanns-[Group1-VLAN501]-static",
+                "status": "created"
+              },
+              "children": []
+            }
           }
         ]
       }
@@ -38,6 +47,15 @@
                 "dn": "uni/phys-Group1-DOMAIN-RED/domain-group1",
                 "name": "group1",
                 "rn": "domain-group1",
+                "status": "created"
+              },
+              "children": []
+            }
+          },
+          {
+            "infraRsVlanNs": {
+              "attributes": {
+                "tDn": "uni/infra/vlanns-[Group1-VLAN701]-static",
                 "status": "created"
               },
               "children": []

@@ -1,0 +1,22 @@
+{
+  "domain_green": {
+    "fvRsDomAtt": {
+      "attributes": {
+        "resImedcy": "immediate",
+        "tDn": "uni/phys-Group1-DOMAIN-GREEN",
+        "status": "created"
+      },
+      "children": []
+    }
+  },
+  "domain_red": {
+    "fvRsDomAtt": {
+      "attributes": {
+        "resImedcy": "immediate",
+        "tDn": "uni/phys-Group1-DOMAIN-RED",
+        "status": "created"
+      },
+      "children": []
+    }
+  }
+}
