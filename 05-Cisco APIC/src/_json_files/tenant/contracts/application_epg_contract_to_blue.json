@@ -1,0 +1,23 @@
+{
+  "application_epg_contracts_to_blue_array": [
+    {
+      "fvRsCons": {
+        "attributes": {
+          "tnVzBrCPName": "2greenRed-blue",
+          "status": "created,modified"
+        },
+        "children": [
+          {
+            "vzConsLbl": {
+              "attributes": {
+                "name": "access_to_blue",
+                "status": "created"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

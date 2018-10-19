@@ -1,0 +1,24 @@
+{
+  "static_port_array": [
+    {
+      "fvRsPathAtt": {
+        "attributes": {
+          "encap": "vlan-501",
+          "tDn": "topology/pod-1/protpaths-101-102/pathep-[Group1-POLGROUP-GREEN]",
+          "status": "created"
+        },
+        "children": []
+      }
+    },
+    {
+      "fvRsPathAtt": {
+        "attributes": {
+          "encap": "vlan-701",
+          "tDn": "topology/pod-1/paths-102/pathep-[eth1/20]",
+          "status": "created"
+        },
+        "children": []
+      }
+    }
+  ]
+}

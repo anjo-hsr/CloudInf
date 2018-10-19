@@ -1,0 +1,44 @@
+{
+  "vpc_interface_array": [
+    {
+      "infraAccBndlGrp": {
+        "attributes": {
+          "dn": "uni/infra/funcprof/accbundle-Group1-POLGROUP-GREEN",
+          "lagT": "node",
+          "name": "Group1-POLGROUP-GREEN",
+          "rn": "accbundle-Group1-POLGROUP-GREEN",
+          "status": "created"
+        },
+        "children": [
+          {
+            "infraRsAttEntP": {
+              "attributes": {
+                "tDn": "uni/infra/attentp-Group1-AAEP-GREEN",
+                "status": "created,modified"
+              },
+              "children": []
+            }
+          },
+          {
+            "infraRsLacpPol": {
+              "attributes": {
+                "tnLacpLagPolName": "LACP",
+                "status": "created,modified"
+              },
+              "children": []
+            }
+          },
+          {
+            "infraRsCdpIfPol": {
+              "attributes": {
+                "tnCdpIfPolName": "CDP_ON",
+                "status": "created,modified"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

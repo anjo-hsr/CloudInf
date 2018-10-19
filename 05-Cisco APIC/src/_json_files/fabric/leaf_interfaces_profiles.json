@@ -1,0 +1,96 @@
+{
+  "leaf_interfaces_profile_array": [
+    {
+      "infraAccPortP": {
+        "attributes": {
+          "dn": "uni/infra/accportprof-Group1-INTPROILE-GREEN",
+          "name": "Group1-INTPROILE-GREEN",
+          "rn": "accportprof-Group1-INTPROILE-GREEN",
+          "status": "created,modified"
+        },
+        "children": [
+          {
+            "infraHPortS": {
+              "attributes": {
+                "dn": "uni/infra/accportprof-Group1-INTPROILE-GREEN/hports-e1-5-typ-range",
+                "name": "e1-5",
+                "rn": "hports-e1-5-typ-range",
+                "status": "created,modified"
+              },
+              "children": [
+                {
+                  "infraPortBlk": {
+                    "attributes": {
+                      "dn": "uni/infra/accportprof-Group1-INTPROILE-GREEN/hports-e1-5-typ-range/portblk-block2",
+                      "fromPort": "5",
+                      "toPort": "5",
+                      "name": "block2",
+                      "rn": "portblk-block2",
+                      "status": "created,modified"
+                    },
+                    "children": []
+                  }
+                },
+                {
+                  "infraRsAccBaseGrp": {
+                    "attributes": {
+                      "tDn": "uni/infra/funcprof/accbundle-Group1-POLGROUP-GREEN",
+                      "status": "created,modified"
+                    },
+                    "children": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "infraAccPortP": {
+        "attributes": {
+          "dn": "uni/infra/accportprof-Group1-INTPROFILE-RED",
+          "name": "Group1-INTPROFILE-RED",
+          "rn": "accportprof-Group1-INTPROFILE-RED",
+          "status": "created,modified"
+        },
+        "children": [
+          {
+            "infraHPortS": {
+              "attributes": {
+                "dn": "uni/infra/accportprof-Group1-INTPROFILE-RED/hports-e1-20-typ-range",
+                "name": "e1-20",
+                "rn": "hports-e1-20-typ-range",
+                "status": "created,modified"
+              },
+              "children": [
+                {
+                  "infraPortBlk": {
+                    "attributes": {
+                      "dn": "uni/infra/accportprof-Group1-INTPROFILE-RED/hports-e1-20-typ-range/portblk-block2",
+                      "fromPort": "20",
+                      "toPort": "20",
+                      "name": "block2",
+                      "rn": "portblk-block2",
+                      "status": "created,modified"
+                    },
+                    "children": []
+                  }
+                },
+                {
+                  "infraRsAccBaseGrp": {
+                    "attributes": {
+                      "tDn": "uni/infra/funcprof/accportgrp-Group1-POLGROUP-RED",
+                      "status": "created,modified"
+                    },
+                    "children": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

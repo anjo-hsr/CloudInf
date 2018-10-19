@@ -1,0 +1,42 @@
+{
+  "application_epg_contracts_between_epgs_array": [
+    {
+      "fvRsProv": {
+        "attributes": {
+          "tnVzBrCPName": "2greenRed-redGreen",
+          "status": "created,modified"
+        },
+        "children": [
+          {
+            "vzProvLbl": {
+              "attributes": {
+                "name": "access_for_neighbor",
+                "status": "created"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fvRsCons": {
+        "attributes": {
+          "tnVzBrCPName": "2greenRed-redGreen",
+          "status": "created,modified"
+        },
+        "children": [
+          {
+            "vzConsLbl": {
+              "attributes": {
+                "name": "access_to_neighbor",
+                "status": "created"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

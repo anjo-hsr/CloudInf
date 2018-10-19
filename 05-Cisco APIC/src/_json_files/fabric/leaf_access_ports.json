@@ -1,0 +1,37 @@
+{
+  "leaf_access_port_array": [{
+	"infraAccPortGrp": {
+		"attributes": {
+			"dn": "uni/infra/funcprof/accportgrp-Group1-POLGROUP-RED",
+			"name": "Group1-POLGROUP-RED",
+			"rn": "accportgrp-Group1-POLGROUP-RED",
+			"status": "created"
+		},
+		"children": [{
+				"infraRsAttEntP": {
+					"attributes": {
+						"tDn": "uni/infra/attentp-Group1-AAEP-RED",
+						"status": "created,modified"
+					},
+					"children": []
+				}
+			}, {
+				"infraRsCdpIfPol": {
+					"attributes": {
+						"tnCdpIfPolName": "CDP_ON",
+						"status": "created,modified"
+					},
+					"children": []
+				}
+			}, {
+				"infraRsLldpIfPol": {
+					"attributes": {
+						"tnLldpIfPolName": "LLDP_ON",
+						"status": "created,modified"
+					},
+					"children": []
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,40 @@
+{
+  "bridge_domain_array": [
+    {
+      "fvBD": {
+        "attributes": {
+          "dn": "uni/tn-group1/BD-test_BD",
+          "mac": "00:22:BD:F8:19:FF",
+          "name": "test_BD",
+          "rn": "BD-test_BD",
+          "status": "created"
+        },
+        "children": [
+          {
+            "dhcpLbl": {
+              "attributes": {
+                "dn": "uni/tn-group1/BD-test_BD/dhcplbl-Blue-DHCP",
+                "name": "Blue-DHCP",
+                "rn": "dhcplbl-Blue-DHCP",
+                "status": "created"
+              },
+              "children": []
+            }
+          },
+          {
+            "fvSubnet": {
+              "attributes": {
+                "dn": "uni/tn-group1/BD-test_BD/subnet-[192.168.111.1/24]",
+                "ip": "192.168.111.1/24",
+                "ctrl": "unspecified",
+                "rn": "subnet-[192.168.111.1/24]",
+                "status": "created"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

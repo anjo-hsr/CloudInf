@@ -1,0 +1,56 @@
+{
+  "vlans_array": [
+    {
+      "fvnsVlanInstP": {
+        "attributes": {
+          "dn": "uni/infra/vlanns-[Group1-VLAN531]-static",
+          "name": "Group1-VLAN501",
+          "allocMode": "static",
+          "rn": "vlanns-[Group1-VLAN501]-static",
+          "status": "created"
+        },
+        "children": [
+          {
+            "fvnsEncapBlk": {
+              "attributes": {
+                "dn": "uni/infra/vlanns-[Group1-VLAN501]-static/from-[vlan-501]-to-[vlan-501]",
+                "from": "vlan-501",
+                "to": "vlan-501",
+                "allocMode": "static",
+                "rn": "from-[vlan-501]-to-[vlan-501]",
+                "status": "created"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fvnsVlanInstP": {
+        "attributes": {
+          "dn": "uni/infra/vlanns-[Group1-VLAN701]-static",
+          "name": "Group1-VLAN701",
+          "allocMode": "static",
+          "rn": "vlanns-[Group1-VLAN701]-static",
+          "status": "created"
+        },
+        "children": [
+          {
+            "fvnsEncapBlk": {
+              "attributes": {
+                "dn": "uni/infra/vlanns-[Group1-VLAN701]-static/from-[vlan-701]-to-[vlan-701]",
+                "from": "vlan-701",
+                "to": "vlan-701",
+                "allocMode": "static",
+                "rn": "from-[vlan-701]-to-[vlan-701]",
+                "status": "created"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

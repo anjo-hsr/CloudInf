@@ -1,0 +1,74 @@
+{
+  "contract_array": [
+    {
+      "vzBrCP": {
+        "attributes": {
+          "dn": "uni/tn-group1/brc-2greenRed-redGreen",
+          "name": "2greenRed-redGreen",
+          "scope": "tenant",
+          "rn": "brc-2greenRed-redGreen",
+          "status": "created"
+        },
+        "children": [
+          {
+            "vzSubj": {
+              "attributes": {
+                "dn": "uni/tn-group1/brc-2greenRed-redGreen/subj-Subject",
+                "name": "Subject",
+                "rn": "subj-Subject",
+                "status": "created"
+              },
+              "children": [
+                {
+                  "vzRsSubjFiltAtt": {
+                    "attributes": {
+                      "status": "created,modified",
+                      "tnVzFilterName": "default",
+                      "directives": "none"
+                    },
+                    "children": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "vzBrCP": {
+        "attributes": {
+          "dn": "uni/tn-group1/brc-2greenRed-blue",
+          "name": "2greenRed-blue",
+          "scope": "tenant",
+          "rn": "brc-2greenRed-blue",
+          "status": "created"
+        },
+        "children": [
+          {
+            "vzSubj": {
+              "attributes": {
+                "dn": "uni/tn-group1/brc-2greenRed-blue/subj-Subject",
+                "name": "Subject",
+                "rn": "subj-Subject",
+                "status": "created"
+              },
+              "children": [
+                {
+                  "vzRsSubjFiltAtt": {
+                    "attributes": {
+                      "status": "created,modified",
+                      "tnVzFilterName": "DNS-NTP-ICMP",
+                      "directives": "none"
+                    },
+                    "children": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

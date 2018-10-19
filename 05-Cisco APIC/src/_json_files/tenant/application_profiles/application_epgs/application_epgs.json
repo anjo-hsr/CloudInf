@@ -1,0 +1,46 @@
+{
+  "application_epg_array": [
+    {
+      "fvAEPg": {
+        "attributes": {
+          "dn": "uni/tn-group1/ap-Test_AP/epg-green_epg",
+          "name": "green_epg",
+          "rn": "green_epg",
+          "status": "created"
+        },
+        "children": [
+          {
+            "fvRsBd": {
+              "attributes": {
+                "tnFvBDName": "test_BD",
+                "status": "created,modified"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fvAEPg": {
+        "attributes": {
+          "dn": "uni/tn-group1/ap-Test_AP/epg-red_epg",
+          "name": "red_epg",
+          "rn": "red_epg",
+          "status": "created"
+        },
+        "children": [
+          {
+            "fvRsBd": {
+              "attributes": {
+                "tnFvBDName": "test_BD",
+                "status": "created,modified"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

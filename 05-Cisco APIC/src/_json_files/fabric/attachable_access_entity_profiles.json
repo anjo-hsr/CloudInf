@@ -1,0 +1,84 @@
+{
+  "infrastructure_array": [
+    {
+      "infraInfra": {
+        "attributes": {
+          "dn": "uni/infra",
+          "status": "modified"
+        },
+        "children": [
+          {
+            "infraAttEntityP": {
+              "attributes": {
+                "dn": "uni/infra/attentp-Group1-AEEP-GREEN",
+                "name": "Group1-AEEP-GREEN",
+                "rn": "attentp-Group1-AEEP-GREEN",
+                "status": "created"
+              },
+              "children": [
+                {
+                  "infraRsDomP": {
+                    "attributes": {
+                      "tDn": "uni/phys-Group1-DOMAIN-GREEN",
+                      "status": "created"
+                    },
+                    "children": []
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "infraFuncP": {
+              "attributes": {
+                "dn": "uni/infra/funcprof",
+                "status": "modified"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "infraInfra": {
+        "attributes": {
+          "dn": "uni/infra",
+          "status": "modified"
+        },
+        "children": [
+          {
+            "infraAttEntityP": {
+              "attributes": {
+                "dn": "uni/infra/attentp-Group1-AEEP-RED",
+                "name": "Group1-AEEP-RED",
+                "rn": "attentp-Group1-AEEP-RED",
+                "status": "created"
+              },
+              "children": [
+                {
+                  "infraRsDomP": {
+                    "attributes": {
+                      "tDn": "uni/phys-Group1-DOMAIN-RED",
+                      "status": "created"
+                    },
+                    "children": []
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "infraFuncP": {
+              "attributes": {
+                "dn": "uni/infra/funcprof",
+                "status": "modified"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

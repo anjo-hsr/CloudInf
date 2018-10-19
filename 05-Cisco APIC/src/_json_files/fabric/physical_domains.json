@@ -1,0 +1,50 @@
+{
+  "physical_domain_array": [
+    {
+      "physDomP": {
+        "attributes": {
+          "dn": "uni/phys-Group1-DOMAIN-GREEN",
+          "name": "Group1-DOMAIN-GREEN2",
+          "rn": "phys-Group1-DOMAIN-GREEN2",
+          "status": "created"
+        },
+        "children": [
+          {
+            "aaaDomainRef": {
+              "attributes": {
+                "dn": "uni/phys-Group1-DOMAIN-GREEN/domain-group1",
+                "name": "group1",
+                "rn": "domain-group1",
+                "status": "created"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "physDomP": {
+        "attributes": {
+          "dn": "uni/phys-Group1-DOMAIN-RED",
+          "name": "Group1-DOMAIN-RED",
+          "rn": "phys-Group1-DOMAIN-RED",
+          "status": "created"
+        },
+        "children": [
+          {
+            "aaaDomainRef": {
+              "attributes": {
+                "dn": "uni/phys-Group1-DOMAIN-RED/domain-group1",
+                "name": "group1",
+                "rn": "domain-group1",
+                "status": "created"
+              },
+              "children": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
