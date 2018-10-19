@@ -10,9 +10,9 @@
           {
             "infraAttEntityP": {
               "attributes": {
-                "dn": "uni/infra/attentp-Group1-AEEP-GREEN",
-                "name": "Group1-AEEP-GREEN",
-                "rn": "attentp-Group1-AEEP-GREEN",
+                "dn": "uni/infra/attentp-Group1-AAEP-GREEN",
+                "name": "Group1-AAEP-GREEN",
+                "rn": "attentp-Group1-AAEP-GREEN",
                 "status": "created"
               },
               "children": [
@@ -50,9 +50,9 @@
           {
             "infraAttEntityP": {
               "attributes": {
-                "dn": "uni/infra/attentp-Group1-AEEP-RED",
-                "name": "Group1-AEEP-RED",
-                "rn": "attentp-Group1-AEEP-RED",
+                "dn": "uni/infra/attentp-Group1-AAEP-RED",
+                "name": "Group1-AAEP-RED",
+                "rn": "attentp-Group1-AAEP-RED",
                 "status": "created"
               },
               "children": [

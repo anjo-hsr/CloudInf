@@ -20,8 +20,6 @@ def create_application_epgs(connection):
 
 # The POST must be done to each epg object thats why the epg_dn is required
 def __create_static_ports(connection, epg_dn):
-    print("\n\n*********************\nStart of static ports\n" + epg_dn + "*****************\n\n")
-
     file_path = "./_json_files/tenant/application_profiles/application_epgs/static_ports.json"
 
     json_array_name = "static_port_array"
