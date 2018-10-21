@@ -25,19 +25,19 @@ token = login_information[2]
 connection = Connection(https_address, cookie, token)
 
 # Things in Fabric
-#create_vlans(connection)
-#create_physical_domains(connection)
-#attachable_access_entity_profiles(connection)
-#create_policy_groups(connection)
-#create_leaf_interfaces_profiles(connection)
-#create_leaf_profiles(connection)
+create_vlans(connection)
+create_physical_domains(connection)
+attachable_access_entity_profiles(connection)
+create_policy_groups(connection)
+create_leaf_interfaces_profiles(connection)
+create_leaf_profiles(connection)
 
 print("Moving to tenant")
 
 # Things in Tenant
-#generate_default_contracts(connection)
-#bd_name = generate_bridge_domains(connection)
+generate_default_contracts(connection)
+bd_name = generate_bridge_domains(connection)
 generate_vrfs(connection)
 bind_vrfs(connection)
-#generate_application_profiles(connection)
-#create_application_epgs(connection)
+generate_application_profiles(connection)
+create_application_epgs(connection)
