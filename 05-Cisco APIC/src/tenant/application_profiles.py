@@ -12,10 +12,12 @@ def __generate_empty_application_profiles(connection):
 def __generate_application_epgs(connection):
     application_epgs = json_file_to_data("./_json_files/tenant/application_profiles/application_epgs/application_epgs.json")
 
+    json_main_attribute = "fvAEPg"
     for application_epg in application_epgs['application_epg_array']:
-        application_epg_dn = application_epg["fvAEPg"]["attributes"]["dn"]
+        application_epg_dn = application_epg[json_main_attribute]["attributes"]["dn"]
         post_address = get_post_address(connection.get_https_address(), application_epg_dn)
         make_post_request(post_address, connection, application_epg)
+
         bind_contracts(connection, post_address)
         bind_physical_domain(connection, post_address)
 

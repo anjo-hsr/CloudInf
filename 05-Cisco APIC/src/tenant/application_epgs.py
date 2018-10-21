@@ -13,8 +13,6 @@ def create_application_epgs(connection):
 
     for element in data[json_array_name]:
         application_epg_dn = element[json_main_attribute]["attributes"]["dn"]
-        post_address = get_post_address(connection.get_https_address(), application_epg_dn)
-        make_post_request(post_address, connection, element)
         __create_static_ports(connection, application_epg_dn)
 
 
