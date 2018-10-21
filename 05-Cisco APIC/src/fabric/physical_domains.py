@@ -11,6 +11,7 @@ def bind_physical_domain(connection, post_address):
     with open('./_json_files/tenant/application_profiles/physical_domains.json') as contracts_between_egps_file:
         physical_domains = generate_json_from_file(contracts_between_egps_file)
 
+    # Check for epg must be done to prevent that a epg is mapped to physical domains
     if "green_epg" in post_address:
         contract_between_egps = physical_domains['domain_green']
         make_post_request(post_address, connection, contract_between_egps)
