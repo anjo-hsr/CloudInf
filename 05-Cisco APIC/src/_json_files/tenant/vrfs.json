@@ -3,9 +3,9 @@
     {
       "fvCtx": {
         "attributes": {
-          "dn": "uni/tn-group1/ctx-group1_vrf",
-          "name": "group1_vrf",
-          "rn": "ctx-group1_vrf",
+          "dn": "uni/tn-group1/ctx-Group1-VRF",
+          "name": "Group1-VRF",
+          "rn": "ctx-Group1-VRF",
           "status": "created"
         },
         "children": []
