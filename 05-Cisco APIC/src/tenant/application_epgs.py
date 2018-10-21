@@ -18,12 +18,13 @@ def create_application_epgs(connection):
         __create_static_ports(connection, application_epg_dn)
 
 
-# The POST must be done to each epg object thats why the epg_dn is required
+# The POST must be done to each epg object, that's why the epg_dn is required
 def __create_static_ports(connection, epg_dn):
     file_path = "./_json_files/tenant/application_profiles/application_epgs/static_ports.json"
 
     data = json_file_to_data(file_path)
 
+    # Check for epg must be done to prevent that a epg is mapped to both ports
     if "green_epg" in epg_dn:
         post_address = get_post_address(connection.get_https_address(), epg_dn)
         make_post_request(post_address, connection, data["static_port_green"])
