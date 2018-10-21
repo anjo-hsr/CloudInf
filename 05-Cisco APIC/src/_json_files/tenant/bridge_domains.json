@@ -3,17 +3,17 @@
     {
       "fvBD": {
         "attributes": {
-          "dn": "uni/tn-group1/BD-green_red_BD",
+          "dn": "uni/tn-group1/BD-green-red_BD",
           "mac": "00:22:BD:F8:19:FF",
-          "name": "green_red_BD",
-          "rn": "BD-green_red_BD",
+          "name": "green-red_BD",
+          "rn": "BD-green-red_BD",
           "status": "created"
         },
         "children": [
           {
             "dhcpLbl": {
               "attributes": {
-                "dn": "uni/tn-group1/BD-green_red_BD/dhcplbl-Blue-DHCP",
+                "dn": "uni/tn-group1/BD-green-red_BD/dhcplbl-Blue-DHCP",
                 "name": "Blue-DHCP",
                 "rn": "dhcplbl-Blue-DHCP",
                 "status": "created"
@@ -24,7 +24,7 @@
           {
             "fvSubnet": {
               "attributes": {
-                "dn": "uni/tn-group1/BD-green_red_BD/subnet-[192.168.100.1/24]",
+                "dn": "uni/tn-group1/BD-green-red_BD/subnet-[192.168.100.1/24]",
                 "ip": "192.168.100.1/24",
                 "ctrl": "unspecified",
                 "rn": "subnet-[192.168.100.1/24]",

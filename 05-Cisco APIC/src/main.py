@@ -8,8 +8,9 @@ from src.fabric.leaf_switches.leaf_interfaces_policy_groups import create_policy
 from src.fabric.leaf_switches.leaf_interfaces_profiles import create_leaf_interfaces_profiles
 from src.fabric.leaf_switches.leaf_profiles import create_leaf_profiles
 
-from src.tenant.contract import generate_default_contracts
+from src.tenant.contracts import generate_default_contracts
 from src.tenant.bridge_domains import generate_bridge_domains
+from src.tenant.vrfs import bind_vrfs, generate_vrfs
 from src.tenant.application_profiles import generate_application_profiles
 from src.tenant.application_epgs import create_application_epgs
 
@@ -35,6 +36,8 @@ print("Moving to tenant")
 
 # Things in Tenant
 generate_default_contracts(connection)
-generate_bridge_domains(connection)
+bd_name = generate_bridge_domains(connection)
+generate_vrfs(connection)
+bind_vrfs(connection, "green-red_BD", "group1_vrf")
 generate_application_profiles(connection)
 create_application_epgs(connection)

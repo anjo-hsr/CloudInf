@@ -1,0 +1,15 @@
+{
+  "vrf_array": [
+    {
+      "fvCtx": {
+        "attributes": {
+          "dn": "uni/tn-group1/ctx-group1_vrf",
+          "name": "group1_vrf",
+          "rn": "ctx-group1_vrf",
+          "status": "created"
+        },
+        "children": []
+      }
+    }
+  ]
+}
