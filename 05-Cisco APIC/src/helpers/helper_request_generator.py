@@ -19,6 +19,8 @@ def make_post_request(post_address, connection, json):
     if response.status_code == 400:
         pprint(json)
         pprint(post_address)
-    pprint(response.status_code)
 
+    pprint(response.status_code)
     return response
+
+    pprint(post_address)

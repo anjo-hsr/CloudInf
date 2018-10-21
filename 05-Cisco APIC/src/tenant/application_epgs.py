@@ -1,4 +1,4 @@
-from src.helpers.helper_json_files import json_file_to_data, json_file_to_post_requests
+from src.helpers.helper_json_files import json_file_to_data
 from src.helpers.helper_request_generator import get_post_address, make_post_request
 
 
