@@ -14,7 +14,7 @@ from src.tenant.vrfs import bind_vrfs, generate_vrfs
 from src.tenant.application_profiles import generate_application_profiles
 from src.tenant.application_epgs import create_application_epgs
 
-ip_address = raw_input("Please enter Cisco APICs IP address: [10.18.1.10]\t") or "10.18.1.10"
+ip_address = input("Please enter Cisco APICs IP address: [10.18.1.10]\t") or "10.18.1.10"
 https_address = "https://" + ip_address
 
 login_information = login(https_address)

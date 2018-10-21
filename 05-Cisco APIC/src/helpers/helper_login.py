@@ -28,11 +28,11 @@ def __get_session(login_response):
 
 
 def __get_user_name():
-    return raw_input("Please enter your login name: [group1]\t") or "group1"
+    return input("Please enter your login name: [group1]\t") or "group1"
 
 
 def __get_password():
-    return raw_input("Please enter your password: []\t\t\t") or "Lsd8ajYTZk2y"
+    return input("Please enter your password: []\t\t\t") or "Lsd8ajYTZk2y"
 
 
 def __get_login_token(https_address, group_name, password):
