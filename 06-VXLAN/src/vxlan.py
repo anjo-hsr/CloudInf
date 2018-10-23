@@ -62,8 +62,6 @@ def map_hosts_with_switch(network, switch):
         network.addLink(switch, host)
         print(str(switch) + " - " + str(host))
 
-    add_vlan_to_switchports(network, switch)
-
 
 def add_vlan_to_switchports(network, switch):
     port_counter = 1
@@ -114,16 +112,17 @@ def new_network(peers, max_vlans, max_hosts_per_vlan):
 
     switch = network.addSwitch("s" + get_host_id())
 
+    map_hosts_with_switch(network, switch)
+
     network.start()
 
     for switch in network.switches:
         switch.cmdPrint("ovs-vsctl set-fail-mode s" + get_host_id() + " standalone")
+        add_vlan_to_switchports(network, switch)
 
     print_node_ips(network)
 
     map_vxlans(network, peers, max_vlans)
-
-    map_hosts_with_switch(network, switch)
     CLI(network)
 
     network.stop()
