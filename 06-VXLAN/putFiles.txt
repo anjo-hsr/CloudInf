@@ -1,0 +1,10 @@
+open scp://mininet:mininet@192.168.72.130/
+put "D:\CloudInf\06-VXLAN\src\*" /home/mininet/mininet/custom/
+
+open scp://mininet:mininet@192.168.72.131/
+put "D:\CloudInf\06-VXLAN\src\*" /home/mininet/mininet/custom/
+
+open scp://mininet:mininet@192.168.72.132/
+put "D:\CloudInf\06-VXLAN\src\*" /home/mininet/mininet/custom/
+
+exit
