@@ -8,7 +8,7 @@ from mininet.log import setLogLevel, info
 from helpers.helper_host import get_host_id
 from helpers.helper_system import get_peers, terminate_sessions
 from helpers.helper_vxlan import map_vxlans
-from helpers.helper_switch import map_hosts_with_switch, add_vlan_to_switchports
+from helpers.helper_switch import map_hosts_with_switch, add_vlan_to_switchports, configure_switch
 from helpers.helper_print import print_node_ips
 from helpers.helper_network import add_hosts_to_network
 
@@ -25,9 +25,7 @@ def new_network(max_vlans, max_hosts_per_vlan):
 
     network.start()
 
-    for switch in network.switches:
-        switch.cmdPrint("ovs-vsctl set-fail-mode s" + get_host_id() + " standalone")
-        add_vlan_to_switchports(network, switch)
+    configure_switch(network)
 
     print_node_ips(network)
 
