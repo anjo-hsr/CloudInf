@@ -1,16 +1,14 @@
 import sys
 
 from mininet.net import Mininet
-from mininet.node import RemoteController
 from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 
-from helpers.helper_host import get_host_id
 from helpers.helper_system import get_peers, terminate_sessions
+from helpers.helper_network import add_hosts_to_network, add_switch_to_network, add_controller_to_network
 from helpers.helper_vxlan import map_vxlans
-from helpers.helper_switch import map_hosts_with_switch, add_vlan_to_switchports, configure_switch
+from helpers.helper_switch import map_hosts_with_switch, configure_switch
 from helpers.helper_print import print_node_ips
-from helpers.helper_network import add_hosts_to_network
 
 
 def new_network(max_vlans, max_hosts_per_vlan):
@@ -18,8 +16,8 @@ def new_network(max_vlans, max_hosts_per_vlan):
     network = Mininet()
 
     add_hosts_to_network(network, max_vlans, max_hosts_per_vlan)
-
-    switch = network.addSwitch("s" + get_host_id())
+    switch = add_switch_to_network(network)
+    add_controller_to_network(network)
 
     map_hosts_with_switch(network, switch)
 

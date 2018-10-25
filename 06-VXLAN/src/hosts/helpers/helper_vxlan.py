@@ -6,7 +6,7 @@ def generate_vxlan_tunnels(ip_address, max_vlans, switch):
     ips = [ip_address, get_switch_ip_address(switch)]
     for vlan in generate_vlan_array(max_vlans):
         print(str(min(ips)) + "-" + str(max(ips)) + " - vlan" + str(vlan))
-        vxlan_tag = hash(str(min(ips)) + "-" + str(max(ips)) +
+        vxlan_tag = 100 + hash(str(min(ips)) + "-" + str(max(ips)) +
                          "-" + str(vlan)) & 10000000
 
         switch.cmdPrint(

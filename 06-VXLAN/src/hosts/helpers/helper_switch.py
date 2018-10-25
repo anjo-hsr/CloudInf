@@ -4,6 +4,7 @@ from helper_host import get_host_id
 from helper_vlan import get_vlan_id
 
 
+
 def get_switch_ip_address(switch):
     ip_string = switch.cmd(
         "ifconfig eth0 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*'")
