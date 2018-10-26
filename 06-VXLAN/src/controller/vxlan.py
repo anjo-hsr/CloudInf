@@ -106,18 +106,21 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.mac_to_port[dpid][src] = in_port
 
         if dst in self.mac_to_port[dpid]:
-            print("Hoi")
+            print("No flooding needed. Port already in port table of controller.")
             out_port = self.mac_to_port[dpid][dst]
 
         else:
             out_port = ofproto.OFPP_FLOOD
 
-            print("Heii")
+            print("Flooding needed. Port already in port table of controller.")
             if in_port > quantity_local_ports:
+                print(" - Flooding only on local ports.")
                 return self._flood_only_lan_ports(datapath, dst, in_port, msg, ofproto, out_port, parser,
                                                   quantity_local_ports, src)
 
-        print("Hallo")
+            else:
+                print(" - Flooding done on local ports and VXLANs.")
+
         actions = [parser.OFPActionOutput(out_port)]
         self._install_flow(msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser)
 
