@@ -13,5 +13,33 @@ open scp://mininet:mininet@192.168.72.132/
 put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
 put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
 
+open scp://mininet:mininet@192.168.72.134/
+put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
+
+open scp://mininet:mininet@192.168.72.135/
+put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
+
+open scp://mininet:mininet@192.168.72.136/
+put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
+
+open scp://mininet:mininet@192.168.72.137/
+put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
+
+open scp://mininet:mininet@192.168.72.138/
+put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
+
+open scp://mininet:mininet@192.168.72.139/
+put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
+
+open scp://mininet:mininet@192.168.72.140/
+put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
+
 
 exit
