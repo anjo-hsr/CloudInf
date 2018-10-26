@@ -1,4 +1,4 @@
-from helper_host import generate_hosts, get_host_id
+from helper_host import generate_hosts, get_hex_host_id
 from mininet.node import RemoteController
 
 
@@ -10,7 +10,7 @@ def add_hosts_to_network(network, max_vlans, max_hosts_per_vlan):
 
 
 def add_switch_to_network(network):
-    return network.addSwitch("s" + get_host_id())
+    return network.addSwitch("s" + get_hex_host_id())
 
 
 def add_controller_to_network(network):

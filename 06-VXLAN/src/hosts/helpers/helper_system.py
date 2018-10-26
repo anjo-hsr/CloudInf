@@ -22,3 +22,11 @@ def get_peers():
 
 def get_host_id():
     return socket.gethostname().replace("vxlan-", "")
+
+
+def get_hex_host_id():
+    return get_hex_id(socket.gethostname().replace("vxlan-", ""))
+
+
+def get_hex_id(id_number):
+    return str("%0.2X" % int(id_number))
