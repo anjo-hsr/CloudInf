@@ -22,6 +22,8 @@ from ryu.lib.packet import packet
 from ryu.lib.packet import ethernet
 from ryu.lib.packet import ether_types
 
+from pprint import pprint
+
 
 class SimpleSwitch13(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
@@ -68,6 +70,8 @@ class SimpleSwitch13(app_manager.RyuApp):
 
     @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
     def _packet_in_handler(self, ev):
+        quantity_local_ports = 4
+
         # If you hit this you might want to increase
         # the "miss_send_length" of your switch
         if ev.msg.msg_len < ev.msg.total_len:
@@ -78,6 +82,11 @@ class SimpleSwitch13(app_manager.RyuApp):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
         in_port = msg.match['in_port']
+
+        pprint("***********PACKET INFO - Start***********")
+        pprint("Packet message: " + str(msg))
+        pprint("Datapath: " + str(datapath.id))
+        pprint("***********PACKET INFO - End***********")
 
         pkt = packet.Packet(msg.data)
         eth = pkt.get_protocols(ethernet.ethernet)[0]
@@ -97,18 +106,22 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.mac_to_port[dpid][src] = in_port
 
         if dst in self.mac_to_port[dpid]:
+            print("Hoi")
             out_port = self.mac_to_port[dpid][dst]
+
         else:
             out_port = ofproto.OFPP_FLOOD
 
+            print("Heii")
+            if in_port > quantity_local_ports:
+                return self._flood_only_lan_ports(datapath, dst, in_port, msg, ofproto, out_port, parser,
+                                                  quantity_local_ports, src)
+
+        print("Hallo")
         actions = [parser.OFPActionOutput(out_port)]
+        self._install_flow(msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser)
 
-        print("\n\n")
-        print(eth.ethertype, dst, in_port, out_port)
-        if check_broadcast_storm(eth.ethertype, dst, in_port, out_port):
-            return
-        print(msg)
-
+    def _install_flow(self, msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser):
         # install a flow to avoid packet_in next time
         if out_port != ofproto.OFPP_FLOOD:
             match = parser.OFPMatch(in_port=in_port, eth_dst=dst, eth_src=src)
@@ -125,14 +138,17 @@ class SimpleSwitch13(app_manager.RyuApp):
 
         out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id,
                                   in_port=in_port, actions=actions, data=data)
-
+        pprint(out)
         datapath.send_msg(out)
 
-
-def check_broadcast_storm(ether_type, dst, in_port, out_port):
-    return in_port > 4 and out_port > 100  # and check_arp_request(ether_type, dst)
-
-
-def check_arp_request(ether_type, dst):
-    arp_lookup_mac_address = "ff:ff:ff:ff:ff:ff"
-    return ether_type == ether_types.ETH_TYPE_ARP and dst == arp_lookup_mac_address
+    def _flood_only_lan_ports(self, datapath, dst, in_port, msg, ofproto, out_port, parser, quantity_local_ports, src):
+        pprint("***********BLOCKED - Start***********")
+        pprint(self.mac_to_port)
+        pprint(dst)
+        pprint(in_port)
+        pprint(out_port)
+        pprint("***********BLOCKED - End***********")
+        for out_port in range(1, quantity_local_ports):
+            actions = [parser.OFPActionOutput(out_port)]
+            self._install_flow(msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser)
+        return
