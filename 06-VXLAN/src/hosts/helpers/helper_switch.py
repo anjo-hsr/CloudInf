@@ -16,7 +16,7 @@ def map_hosts_with_switch(network, switch):
         print(str(switch) + " - " + str(host))
 
 
-def add_vlan_to_switchports(network, switch):
+def __add_vlan_to_switchports(network, switch):
     port_counter = 1
     for host in network.hosts:
         vlan_id = get_vlan_id(host, get_hex_host_id())
@@ -30,4 +30,4 @@ def configure_switch(network):
     for switch in network.switches:
         switch.cmdPrint("ovs-vsctl set-fail-mode s" + get_hex_host_id() + " standalone")
         switch.cmdPrint("ovs-vsctl set Bridge s" + get_hex_host_id() + " protocols=OpenFlow13")
-        add_vlan_to_switchports(network, switch)
+        __add_vlan_to_switchports(network, switch)

@@ -6,7 +6,9 @@ from helper_switch import get_switch_ip_address
 
 def generate_vxlan_tunnels(ip_address, max_vlans, switch):
     ips = [ip_address, get_switch_ip_address(switch)]
-    for vlan in generate_vlan_array(max_vlans):
+    if True:
+    #for vlan in generate_vlan_array(max_vlans):
+        vlan = 100
         print(str(min(ips)) + "-" + str(max(ips)) + " - vlan" + str(vlan))
         vxlan_tag = __connection_string_to_hash(ips, vlan)
 

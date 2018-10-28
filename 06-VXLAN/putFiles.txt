@@ -1,4 +1,5 @@
 open scp://ryu:ryu@192.168.72.100/
+put "D:\CloudInf\06-VXLAN\src\controller\start_controller.sh" /home/ryu/
 put "D:\CloudInf\06-VXLAN\src\controller\*" /home/ryu/ryu/ryu/vxlan/
 
 open scp://mininet:mininet@192.168.72.128/

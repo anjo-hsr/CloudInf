@@ -17,7 +17,7 @@ def parse_arguments():
 
 def terminate_sessions():
     # Terminate current sessions with mn -c
-    subprocess.check_output(['bash', '-c', "mn -c &> /etc/null"])
+    subprocess.check_output(['bash', '-c', "sudo mn -c &> /etc/null"])
 
 
 def get_peers():

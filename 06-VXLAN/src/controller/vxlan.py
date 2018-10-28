@@ -82,12 +82,14 @@ class VXLANSwitch(app_manager.RyuApp):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
         in_port = msg.match['in_port']
-        pprint(msg)
 
-        pprint("***********PACKET INFO - Start***********")
-        pprint("Packet message: " + str(msg))
-        pprint("Datapath: " + str(datapath))
-        pprint("***********PACKET INFO - End***********")
+        pprint(self.mac_to_port)
+
+        # pprint(msg)
+        # pprint("***********PACKET INFO - Start***********")
+        # pprint("Packet message: " + str(msg))
+        # pprint("Datapath: " + str(datapath))
+        # pprint("***********PACKET INFO - End***********")
 
         pkt = packet.Packet(msg.data)
         eth = pkt.get_protocols(ethernet.ethernet)[0]
@@ -113,9 +115,8 @@ class VXLANSwitch(app_manager.RyuApp):
             print("Flooding needed. Destination MAC address not in port table of controller located.")
 
             if in_port > self.quantity_local_ports:
-                out_port = ofproto.OFPP_NORMAL
                 print(" - Flooding only on local ports.")
-                return self._flood_only_lan_ports(datapath, dst, in_port, msg, ofproto, out_port, parser, src)
+                return self._flood_only_lan_ports(datapath, dst, in_port, msg, ofproto, parser, src)
 
             else:
                 out_port = ofproto.OFPP_FLOOD
@@ -124,10 +125,17 @@ class VXLANSwitch(app_manager.RyuApp):
         actions = [parser.OFPActionOutput(out_port)]
         self._install_flow(msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser)
 
+    def _flood_only_lan_ports(self, datapath, dst, in_port, msg, ofproto, parser, src):
+        for out_port in range(1, self.quantity_local_ports + 1):
+            actions = [parser.OFPActionOutput(out_port)]
+            msg.buffer_id = ofproto.OFP_NO_BUFFER
+            self._install_flow(msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser)
+        return
+
     def _install_flow(self, msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser):
         # install a flow to avoid packet_in next time
         if out_port != ofproto.OFPP_FLOOD:
-            if in_port <= self.quantity_local_ports:
+            if dst != "ff:ff:ff:ff:ff:ff":
                 match = parser.OFPMatch(in_port=in_port, eth_dst=dst, eth_src=src)
                 # verify if we have a valid buffer_id, if yes avoid to send both
                 # flow_mod & packet_out
@@ -139,18 +147,7 @@ class VXLANSwitch(app_manager.RyuApp):
         data = None
         if msg.buffer_id == ofproto.OFP_NO_BUFFER:
             data = msg.data
-        pprint(data)
+
         out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id,
                                   in_port=in_port, actions=actions, data=data)
-        pprint(out)
         datapath.send_msg(out)
-
-    def _flood_only_lan_ports(self, datapath, dst, in_port, msg, ofproto, out_port, parser, src):
-        pprint("***********BLOCKED - Start***********")
-        pprint(self.mac_to_port)
-        pprint("Destination MAC: " + dst + "; In Port: " + str(in_port) + "; Out Port: " + str(out_port))
-        pprint("***********BLOCKED - End***********")
-        for out_port in range(1, self.quantity_local_ports + 1):
-            actions = [parser.OFPActionOutput(out_port)]
-            self._install_flow(msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser)
-        return
