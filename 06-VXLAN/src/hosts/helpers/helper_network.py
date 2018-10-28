@@ -13,8 +13,8 @@ def add_switch_to_network(network):
     return network.addSwitch("s" + get_hex_host_id())
 
 
-def add_controller_to_network(network):
-    network.addController(name='ryuController',
+def add_controller_to_network(network, controller_ip):
+    network.addController(name="ryuController",
                           controller=RemoteController,
-                          ip='192.168.72.100',
+                          ip=controller_ip,
                           port=6633)

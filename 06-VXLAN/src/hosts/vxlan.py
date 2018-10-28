@@ -1,23 +1,21 @@
-import sys
-
 from mininet.net import Mininet
 from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 
-from helpers.helper_system import get_peers, terminate_sessions
+from helpers.helper_system import get_peers, parse_arguments, terminate_sessions
 from helpers.helper_network import add_hosts_to_network, add_switch_to_network, add_controller_to_network
 from helpers.helper_vxlan import map_vxlans
 from helpers.helper_switch import map_hosts_with_switch, configure_switch
 from helpers.helper_print import print_node_ips
 
 
-def new_network(max_vlans, max_hosts_per_vlan):
+def new_network(max_vlans, max_hosts_per_vlan, controller_ip):
     peers = get_peers()
     network = Mininet()
 
     add_hosts_to_network(network, max_vlans, max_hosts_per_vlan)
     switch = add_switch_to_network(network)
-    add_controller_to_network(network)
+    add_controller_to_network(network, controller_ip)
 
     map_hosts_with_switch(network, switch)
 
@@ -34,7 +32,8 @@ def new_network(max_vlans, max_hosts_per_vlan):
 
 
 if __name__ == "__main__":
-    terminate_sessions()
+    arguments = parse_arguments()
 
+    terminate_sessions()
     setLogLevel("info")
-    new_network(int(sys.argv[1]), int(sys.argv[2]))
+    new_network(int(arguments.vlans), int(arguments.hosts), arguments.controller1)

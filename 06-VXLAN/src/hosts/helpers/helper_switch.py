@@ -29,5 +29,5 @@ def add_vlan_to_switchports(network, switch):
 def configure_switch(network):
     for switch in network.switches:
         switch.cmdPrint("ovs-vsctl set-fail-mode s" + get_hex_host_id() + " standalone")
-        switch.cmdPrint("ovs-ofctl -O OpenFlow13 s" + get_hex_host_id())
+        switch.cmdPrint("ovs-vsctl set Bridge s" + get_hex_host_id() + " protocols=OpenFlow13")
         add_vlan_to_switchports(network, switch)

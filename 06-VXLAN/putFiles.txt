@@ -2,43 +2,15 @@ open scp://ryu:ryu@192.168.72.100/
 put "D:\CloudInf\06-VXLAN\src\controller\*" /home/ryu/ryu/ryu/vxlan/
 
 open scp://mininet:mininet@192.168.72.128/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\start_vxlan.sh" /home/mininet/
 put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
 
 open scp://mininet:mininet@192.168.72.129/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\start_vxlan.sh" /home/mininet/
 put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
 
 open scp://mininet:mininet@192.168.72.130/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
-put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
-
-open scp://mininet:mininet@192.168.72.131/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
-put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
-
-open scp://mininet:mininet@192.168.72.132/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
-put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
-
-open scp://mininet:mininet@192.168.72.133/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
-put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
-
-open scp://mininet:mininet@192.168.72.134/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
-put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
-
-open scp://mininet:mininet@192.168.72.135/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
-put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
-
-open scp://mininet:mininet@192.168.72.136/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
-put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
-
-open scp://mininet:mininet@192.168.72.137/
-put "D:\CloudInf\06-VXLAN\start_vxlan.sh" /home/mininet/
+put "D:\CloudInf\06-VXLAN\src\hosts\start_vxlan.sh" /home/mininet/
 put "D:\CloudInf\06-VXLAN\src\hosts\*" /home/mininet/mininet/custom/vxlan/
 
 

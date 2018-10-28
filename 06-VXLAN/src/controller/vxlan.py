@@ -25,12 +25,13 @@ from ryu.lib.packet import ether_types
 from pprint import pprint
 
 
-class SimpleSwitch13(app_manager.RyuApp):
+class VXLANSwitch(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
 
     def __init__(self, *args, **kwargs):
-        super(SimpleSwitch13, self).__init__(*args, **kwargs)
+        super(VXLANSwitch, self).__init__(*args, **kwargs)
         self.mac_to_port = {}
+        self.quantity_local_ports = 4
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
@@ -70,7 +71,6 @@ class SimpleSwitch13(app_manager.RyuApp):
 
     @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
     def _packet_in_handler(self, ev):
-        quantity_local_ports = 4
 
         # If you hit this you might want to increase
         # the "miss_send_length" of your switch
@@ -82,10 +82,11 @@ class SimpleSwitch13(app_manager.RyuApp):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
         in_port = msg.match['in_port']
+        pprint(msg)
 
         pprint("***********PACKET INFO - Start***********")
         pprint("Packet message: " + str(msg))
-        pprint("Datapath: " + str(datapath.id))
+        pprint("Datapath: " + str(datapath))
         pprint("***********PACKET INFO - End***********")
 
         pkt = packet.Packet(msg.data)
@@ -101,24 +102,23 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.mac_to_port.setdefault(dpid, {})
 
         self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)
-
         # learn a mac address to avoid FLOOD next time.
         self.mac_to_port[dpid][src] = in_port
 
         if dst in self.mac_to_port[dpid]:
-            print("No flooding needed. Port already in port table of controller.")
+            print("No flooding needed. Destination MAC address already in port table of controller.")
             out_port = self.mac_to_port[dpid][dst]
 
         else:
-            out_port = ofproto.OFPP_FLOOD
+            print("Flooding needed. Destination MAC address not in port table of controller located.")
 
-            print("Flooding needed. Port already in port table of controller.")
-            if in_port > quantity_local_ports:
+            if in_port > self.quantity_local_ports:
+                out_port = ofproto.OFPP_NORMAL
                 print(" - Flooding only on local ports.")
-                return self._flood_only_lan_ports(datapath, dst, in_port, msg, ofproto, out_port, parser,
-                                                  quantity_local_ports, src)
+                return self._flood_only_lan_ports(datapath, dst, in_port, msg, ofproto, out_port, parser, src)
 
             else:
+                out_port = ofproto.OFPP_FLOOD
                 print(" - Flooding done on local ports and VXLANs.")
 
         actions = [parser.OFPActionOutput(out_port)]
@@ -127,31 +127,30 @@ class SimpleSwitch13(app_manager.RyuApp):
     def _install_flow(self, msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser):
         # install a flow to avoid packet_in next time
         if out_port != ofproto.OFPP_FLOOD:
-            match = parser.OFPMatch(in_port=in_port, eth_dst=dst, eth_src=src)
-            # verify if we have a valid buffer_id, if yes avoid to send both
-            # flow_mod & packet_out
-            if msg.buffer_id != ofproto.OFP_NO_BUFFER:
-                self.add_flow(datapath, 1, match, actions, msg.buffer_id)
-                return
-            else:
-                self.add_flow(datapath, 1, match, actions)
+            if in_port <= self.quantity_local_ports:
+                match = parser.OFPMatch(in_port=in_port, eth_dst=dst, eth_src=src)
+                # verify if we have a valid buffer_id, if yes avoid to send both
+                # flow_mod & packet_out
+                if msg.buffer_id != ofproto.OFP_NO_BUFFER:
+                    self.add_flow(datapath, 1, match, actions, msg.buffer_id)
+                    return
+                else:
+                    self.add_flow(datapath, 1, match, actions)
         data = None
         if msg.buffer_id == ofproto.OFP_NO_BUFFER:
             data = msg.data
-
+        pprint(data)
         out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id,
                                   in_port=in_port, actions=actions, data=data)
         pprint(out)
         datapath.send_msg(out)
 
-    def _flood_only_lan_ports(self, datapath, dst, in_port, msg, ofproto, out_port, parser, quantity_local_ports, src):
+    def _flood_only_lan_ports(self, datapath, dst, in_port, msg, ofproto, out_port, parser, src):
         pprint("***********BLOCKED - Start***********")
         pprint(self.mac_to_port)
-        pprint(dst)
-        pprint(in_port)
-        pprint(out_port)
+        pprint("Destination MAC: " + dst + "; In Port: " + str(in_port) + "; Out Port: " + str(out_port))
         pprint("***********BLOCKED - End***********")
-        for out_port in range(1, quantity_local_ports):
+        for out_port in range(1, self.quantity_local_ports + 1):
             actions = [parser.OFPActionOutput(out_port)]
             self._install_flow(msg, datapath, dst, src, in_port, out_port, actions, ofproto, parser)
         return
