@@ -4,4 +4,7 @@ block content
   h1= title
   p Welcome, it's #{time}
   p: img(src="/images/nyan.gif", title="nyan cat")
+  p Nyan cat looks so happy with music.
+  audio(controls=false, autoplay=true, loop=true)
+    source(src='audio/sound.mp3', type='audio/mp3')
   pre #{request_uuid}
