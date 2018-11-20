@@ -1,11 +1,17 @@
 FROM node:8.1.2
-ADD webFiles /app
-WORKDIR /app
-RUN ["npm", "install", "--silent"]
-ARG PORT=8080
+
+ARG WORKDIR
+ARG PORT
+ARG API_NAME
+ARG API_PORT
+
 EXPOSE $PORT
 
-ENV API_HOST "api:5000"
+ADD webFiles $WORKDIR
+WORKDIR $WORKDIR
+RUN ["npm", "install", "--silent"]
+
+ENV API_HOST "$API_NAME:$API_PORT"
 ENV PORT $PORT
 
 #Thanks to https://medium.com/@mccode/processes-in-containers-should-not-run-as-root-2feae3f0df3b

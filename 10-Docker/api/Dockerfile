@@ -1,11 +1,19 @@
 FROM node:8.1.2
-ADD apiFiles /app
-WORKDIR /app
-RUN ["npm", "install", "--silent"]
-ARG PORT=5000
+
+ARG WORKDIR
+ARG PORT
+ARG DB_USER
+ARG DB_PASSWORD
+ARG DB_NAME
+ARG DB_DBNAME
+
 EXPOSE $PORT
 
-ENV DB "postgres://anjo:ojna@db/anjoDb"
+ADD apiFiles $WORKDIR
+WORKDIR $WORKDIR
+RUN ["npm", "install", "--silent"]
+
+ENV DB "postgres://$DB_USER:$DB_PASSWORD@$DB_NAME/$DB_DBNAME"
 ENV PORT $PORT
 
 #Thanks to https://medium.com/@mccode/processes-in-containers-should-not-run-as-root-2feae3f0df3b
