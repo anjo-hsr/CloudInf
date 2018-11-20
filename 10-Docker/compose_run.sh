@@ -6,7 +6,7 @@ docker stop $(docker ps -aq)
 echo -e "\nContainers stopped\n-----------\nStart deleting containers\n"
 docker rm $(docker ps -aq)
 echo -e "\nContainers deleted\n-----------\nStart deleting all cloud-inf images\n"
-docker rmi 10-docker_api 10-docker_web 10-docker_db
+docker rmi cloud-inf_web cloud-inf_api cloud-inf_db
 echo -e "\nImages deleted\n-----------"
 
 echo -e "Building with docker-compose"
