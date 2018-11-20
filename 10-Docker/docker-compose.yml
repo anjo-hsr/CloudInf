@@ -10,8 +10,8 @@ services:
         API_NAME: ${API_NAME}
         API_PORT: ${API_PORT}
         WORKDIR: ${WORKDIR}
-        DOCKER_GROUP: ${DOCKER_GROUP}
-        DOCKER_USER: ${DOCKER_USER}
+        APP_GROUP: ${APP_GROUP}
+        APP_USER: ${APP_USER}
     restart: ${RESTART_NODE}
     networks:
       default:
@@ -34,8 +34,8 @@ services:
         DB_PASSWORD: ${DB_PASSWORD}
         DB_DBNAME: ${DB_DBNAME}
         WORKDIR: ${WORKDIR}
-        DOCKER_GROUP: ${DOCKER_GROUP}
-        DOCKER_USER: ${DOCKER_USER}
+        APP_GROUP: ${APP_GROUP}
+        APP_USER: ${APP_USER}
     restart: ${RESTART_NODE}
     networks:
       intNetwork:
