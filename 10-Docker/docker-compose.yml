@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  web:
+  web:    #Change this if you change the env variable WEB_NAME
     container_name: "${PREFIX}web"
     build:
       context: "./${WEB_NAME}"
@@ -23,7 +23,7 @@ services:
     depends_on:
       - ${API_NAME}
 
-  api:
+  api:    #Change this if you change the env variable API_NAME
     container_name: "${PREFIX}api"
     build:
       context: "./${API_NAME}"
@@ -45,7 +45,7 @@ services:
     depends_on:
       - ${DB_NAME}
 
-  db:
+  db:     #Change this if you change the env variable DB_NAME
     container_name: "${PREFIX}db"
     build:
       context: "./${DB_NAME}"
