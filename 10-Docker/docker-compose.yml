@@ -2,39 +2,39 @@ version: "3.7"
 
 services:
   web:
-    container_name: cloud-inf-web
-    build: ./web
-    restart: "always"
+    container_name: "${PREFIX}web"
+    build: "./${NAME_WEB}"
+    restart: ${RESTART_NODE}
     networks:
       default:
       intNetwork:
         aliases:
-          - web
+          - ${NAME_WEB}
     ports:
-      - "8080:8080"
+      - "${WEB_PORT}:${WEB_PORT}"
     depends_on:
-      - api
+      - ${NAME_API}
 
   api:
-    container_name: cloud-inf-api
-    build: ./api
-    restart: "always"
+    container_name: "${PREFIX}api"
+    build: "./${NAME_API}"
+    restart: ${RESTART_NODE}
     networks:
       intNetwork:
         aliases:
-          - api
+          - ${NAME_API}
       dbNetwork:
     depends_on:
-      - db
+      - ${NAME_DB}
 
   db:
-    container_name: cloud-inf-db
-    build: ./db
-    restart: "no"
+    container_name: "${PREFIX}db"
+    build: "./${NAME_DB}"
+    restart: ${RESTART_DB}
     networks:
       dbNetwork:
         aliases:
-          - db
+          - ${NAME_DB}
 
 networks:
   intNetwork:
