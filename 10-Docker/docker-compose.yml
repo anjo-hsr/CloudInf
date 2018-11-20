@@ -6,59 +6,59 @@ services:
     build:
       context: "./${WEB_NAME}"
       args:
-        PORT: ${WEB_PORT}
-        API_NAME: ${API_NAME}
-        API_PORT: ${API_PORT}
-        WORKDIR: ${WORKDIR}
-        APP_GROUP: ${APP_GROUP}
-        APP_USER: ${APP_USER}
-    restart: ${RESTART_NODE}
+        PORT: $WEB_PORT
+        API_NAME: $API_NAME
+        API_PORT: $API_PORT
+        WORKDIR: $WORKDIR
+        APP_GROUP: $APP_GROUP
+        APP_USER: $APP_USER
+    restart: $RESTART_NODE
     networks:
       default:
       intNetwork:
         aliases:
-          - ${WEB_NAME}
+          - $WEB_NAME
     ports:
       - "${WEB_PORT}:${WEB_PORT}"
     depends_on:
-      - ${API_NAME}
+      - $API_NAME
 
   api:    #Change this if you change the env variable API_NAME
     container_name: "${PREFIX}api"
     build:
       context: "./${API_NAME}"
       args:
-        PORT: ${API_PORT}
-        DB_NAME: ${DB_NAME}
-        DB_USER: ${DB_USER}
-        DB_PASSWORD: ${DB_PASSWORD}
-        DB_DBNAME: ${DB_DBNAME}
-        WORKDIR: ${WORKDIR}
-        APP_GROUP: ${APP_GROUP}
-        APP_USER: ${APP_USER}
-    restart: ${RESTART_NODE}
+        PORT: $API_PORT
+        DB_NAME: $DB_NAME
+        DB_USER: $DB_USER
+        DB_PASSWORD: $DB_PASSWORD
+        DB_DBNAME: $DB_DBNAME
+        WORKDIR: $WORKDIR
+        APP_GROUP: $APP_GROUP
+        APP_USER: $APP_USER
+    restart: $RESTART_NODE
     networks:
       intNetwork:
         aliases:
-          - ${API_NAME}
+          - $API_NAME
       dbNetwork:
     depends_on:
-      - ${DB_NAME}
+      - $DB_NAME
 
   db:     #Change this if you change the env variable DB_NAME
     container_name: "${PREFIX}db"
     build:
       context: "./${DB_NAME}"
       args:
-        PORT: ${DB_PORT}
-        DB_USER: ${DB_USER}
-        DB_PASSWORD: ${DB_PASSWORD}
-        DB_DBNAME: ${DB_DBNAME}
-    restart: ${RESTART_DB}
+        PORT: $DB_PORT
+        DB_USER: $DB_USER
+        DB_PASSWORD: $DB_PASSWORD
+        DB_DBNAME: $DB_DBNAME
+    restart: $RESTART_DB
     networks:
       dbNetwork:
         aliases:
-          - ${DB_NAME}
+          - $DB_NAME
 
 networks:
   intNetwork:
