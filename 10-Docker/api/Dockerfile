@@ -5,7 +5,7 @@ RUN ["npm", "install", "--silent"]
 ARG PORT=5000
 EXPOSE $PORT
 
-ENV DB "postgres://anjo:ojna@db:5432/anjoDb"
+ENV DB "postgres://anjo:ojna@db/anjoDb"
 ENV PORT $PORT
 
 #Thanks to https://medium.com/@mccode/processes-in-containers-should-not-run-as-root-2feae3f0df3b
