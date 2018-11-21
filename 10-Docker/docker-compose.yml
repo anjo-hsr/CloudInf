@@ -62,4 +62,6 @@ services:
 
 networks:
   intNetwork:
+    internal: true
   dbNetwork:
+    internal: true
