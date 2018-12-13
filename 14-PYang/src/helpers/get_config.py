@@ -1,3 +1,6 @@
-def get_config(source, netconf_connection, xml_string):
-    source = "running"
-    return netconf_connection.get_config(source=source, filter=xml_string)
+def get_config(source, m):
+    return m.get_config(source=source)
+
+
+def get_filtered_config(source, m, xml_filter):
+    return m.get_config(source=source, filter=xml_filter)

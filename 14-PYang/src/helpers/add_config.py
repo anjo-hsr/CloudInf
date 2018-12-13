@@ -21,5 +21,8 @@ def add_config(netconf_connection):
 	</native>
     """
 
+
+
+
     res = netconf_connection.edit_conf(config=config_snippet, target="running")
     print(res)

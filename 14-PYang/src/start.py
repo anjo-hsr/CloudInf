@@ -1,58 +1,23 @@
-from src.helpers.get_config import get_config
+from src.helpers.connection_handler import check_connection, generate_connection
+from src.helpers.input_handler import get_add_configs, get_connection, get_datastore, get_filter
+from src.helpers.constants import datastores
+from src.helpers.get_config import get_config, get_filtered_config
 from src.helpers.print_config import print_config
-from src.helpers.connection_handler import generate_connection
+from src.helpers.xml_parser import add_filter
 
-connection_settings = dict([
-    #("HOST", "SW03-pod-1.lab.ins.hsr.ch"),
-    #("PORT", 830),
-    #("USER", "ins"),
-    #("PASSWORD", "ins@lab"),
-    ("HOST", "ios-xe-mgmt.cisco.com"),
-    ("PORT", 10000),
-    ("USER", "root"),
-    ("PASSWORD", "D_Vay!_10&")
-])
+m = generate_connection(get_connection())
+check_connection(m)
 
-sources = dict([
-    ("running", "running"),
-    ("startup", "startup"),
-    ("candidate", "candidate"),
-    ("url", "URL")
-])
+datastore = get_datastore()
+config = get_config(datastore, m)
 
-xml_map = dict([
-    ("vrf", """
-        <filter>
-            <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
-                <vrf/>
-            </native>
-        </filter>
-    """),
-    ("bpg", """
-        <filter>
-            <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp">
-        </filter>
-    """),
-    ("interfaces", """
-        <filter>
-            <interfaces xmlns="urn:ieft:params:xml:ns:yang:ieft-interfaces">
-                <interface/>
-            </interfaces>
-        </filter>
-    """)
-])
+filter = get_filter()
+xml_filter = add_filter(config, filter)
+config = get_filtered_config(datastores["running"], m, xml_filter)
 
-netconf_connection = generate_connection(connection_settings)
-# add_config(netconf_connection)
-# Show running-config
-# config = netconf_connection.get_config("running")
-
-# Show Services
-
-
-xml_string = xml_map["vrf"]
-config = get_config(sources["running"], netconf_connection, xml_string)
+add_xml_config = get_add_configs()
 
 print_config(config)
 
-netconf_connection.close_session()
+m.close_session()
+exit()

@@ -1,0 +1,21 @@
+<config>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <vrf>
+            <definition>
+                <name>{{name}}</name>
+                <rd>{{rd_address}}:{{rd_port}}</rd>
+                <address-family>
+                    <ipv4/>
+                </address-family>
+                <route-target>
+                    <export>
+                        <asn-ip>{{asn_address}}:{{asn_port}}</asn-ip>
+                    </export>
+                    <import>
+                        <asn-ip>{{asn_address}}:{{asn_port}}</asn-ip>
+                    </import>
+                </route-target>
+            </definition>
+        </vrf>
+    </native>
+</config>

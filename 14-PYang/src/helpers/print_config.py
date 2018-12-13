@@ -1,5 +1,5 @@
-import xml.dom.minidom
+import xml.dom.minidom as xml
 
 
 def print_config(config):
-    print(xml.dom.minidom.parseString(config.xml).toprettyxml())
+    print(xml.parseString(config.xml).toprettyxml())
