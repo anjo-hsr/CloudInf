@@ -6,7 +6,7 @@ from src.helpers.constants import connection_parameters, clean_connection_parame
 
 def get_connection():
     parameters = connection_parameters.copy()
-    print("The default connection setup uses Ciscos sandbox infrastructure")
+    print("The default connection setup uses an PE switch.")
     choice = input("Would you like to setup your own connection: [N/y]\t") or "N"
     if choice == "y":
 
@@ -38,6 +38,7 @@ def replace_variables_in_file(filename, parameters):
         for key in parameters.keys():
             imported_xml_file = imported_xml_file.replace("{{" + str(key) + "}}", parameters[key])
     return imported_xml_file
+
 
 def get_filter():
     filter_xml = select_from_dict(xml_filters, " filter", "")
