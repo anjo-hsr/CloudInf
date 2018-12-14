@@ -9,7 +9,8 @@ configure terminal
 ```
 
 ## Usage
-1. Start the script and configure your connection
-2. Select the needed function - terminate with exit
-4. Provide the needed variables
-5. Repeat if needed
+1. Start the script and configure your connection if needed
+2. Select the needed function by typing a listed key - terminate with exit  
+2.1. If needed select an additional key   
+2.2. If needed type the right arguments into the console window  
+3. Repeat if needed
