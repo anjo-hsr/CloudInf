@@ -21,7 +21,6 @@ clean_connection_parameters = dict({
 })
 
 methods = dict([
-    ("exit", None),
     ("add", None),
     ("delete", None),
     ("displayAll", None),
@@ -29,7 +28,6 @@ methods = dict([
 ])
 
 add_xml_files = dict([
-    ("exit", None),
     ("bgp", "add_bgp.xml"),
     ("vlan", "add_vlan.xml"),
     ("vrf", "add_vrf.xml")

@@ -28,10 +28,13 @@ while repeat:
 
     if chosen_method == "filter":
         print_filtered_config(m)
+
     if chosen_method == "add":
         add_xml_config(m)
+
     if chosen_method == "delete":
         delete_xml_config(m)
+
     if chosen_method == "exit":
         break
 
