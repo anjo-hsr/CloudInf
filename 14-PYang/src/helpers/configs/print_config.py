@@ -5,10 +5,10 @@ from src.helpers.input_handler import get_filter
 from src.helpers.get_config import get_filtered_config
 
 
-def print_filtered_config(m, datastore):
+def print_filtered_config(m):
     xml_filter_map = get_filter()
     if xml_filter_map.key is not None:
-        config = get_filtered_config(m, datastore, xml_filter_map.value)
+        config = get_filtered_config(m, xml_filter_map.value)
         __print_config(config, xml_filter_map.key)
 
 

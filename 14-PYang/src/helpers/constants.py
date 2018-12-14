@@ -28,13 +28,6 @@ methods = dict([
     ("filter", None)
 ])
 
-datastores = dict([
-    ("running", "running"),
-    ("startup", "startup"),
-    ("candidate", "candidate"),
-    ("url", "URL")
-])
-
 add_xml_files = dict([
     ("exit", None),
     ("bgp", "add_bgp.xml"),

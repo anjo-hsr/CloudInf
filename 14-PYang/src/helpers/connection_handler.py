@@ -14,3 +14,10 @@ def check_connection(m):
     if not m.connected:
         print("Connection was closed. You were not longer connected to the server")
         exit(1)
+
+
+def check_and_close_connection(m):
+    if m.connected:
+        m.close_session()
+        if not m.connected:
+            print("\n\nSession closed.")

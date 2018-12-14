@@ -1,7 +1,7 @@
 import collections
 
 from src.helpers.filters import xml_filters
-from src.helpers.constants import connection_parameters, datastores, clean_connection_parameters, methods
+from src.helpers.constants import connection_parameters, clean_connection_parameters, methods
 
 
 def get_connection():
@@ -39,11 +39,6 @@ def replace_variables_in_file(filename, parameters):
         for key in parameters.keys():
             imported_xml_file = imported_xml_file.replace("{{" + str(key) + "}}", parameters[key])
     return imported_xml_file
-
-
-def get_datastore():
-    return select_from_dict(datastores, " datastore", "running").value
-
 
 def get_filter():
     filter_xml = select_from_dict(xml_filters, " filter", "")
