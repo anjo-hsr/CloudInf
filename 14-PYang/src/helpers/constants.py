@@ -5,6 +5,13 @@ connection_parameters = dict({
     ("password", "ins@lab")
 })
 
+clean_connection_parameters = dict({
+    ("host", None),
+    ("port", None),
+    ("username", None),
+    ("password", None)
+})
+
 # TODO - Undo
 # connection_parameters = dict({
 #    ("host", "ios-xe-mgmt.cisco.com"),
@@ -13,6 +20,14 @@ connection_parameters = dict({
 #    ("password", "D_Vay!_10&")
 # })
 
+methods = dict([
+    ("exit", None),
+    ("displayAll", None),
+    ("add", None),
+    ("filter", None),
+    ("delete", None)
+])
+
 datastores = dict([
     ("running", "running"),
     ("startup", "startup"),
@@ -20,33 +35,11 @@ datastores = dict([
     ("url", "URL")
 ])
 
-xml_filters = dict([
-    ("vrf", """
-        <filter>
-            <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
-                <vrf/>
-            </native>
-        </filter>
-    """),
-    ("bgp", """
-        <filter>
-            <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp"/>
-        </filter>
-    """),
-    ("interfaces", """
-        <filter>
-            <interfaces xmlns="urn:ieft:params:xml:ns:yang:ieft-interfaces">
-                <interface/>
-            </interfaces>
-        </filter>
-    """)
-])
-
 add_xml_files = dict([
+    ("exit", None),
     ("vrf", "add_vrf.xml"),
     ("vlan", "add_vlan.xml"),
-    ("bgp_leaf", "add_bgp_leaf.xml"),
-    ("bgp_spine", "add_bgp_spine.xml")
+    ("bgp", "add_bgp.xml")
 ])
 
 delete_xml_files = dict([
@@ -59,12 +52,22 @@ vrf_add_parameters = dict([
     ("rd_port", None),
     ("asn_address", None),
     ("asn_port", None),
+    ("as_id", None)
+])
+
+bgp_add_parameters = dict([
+    ("as_id", None),
+    ("remote_id", None),
+    ("remote_as", None),
 ])
 
 vrf_delete_parameters = dict([
-    ("name", None)
+    ("name", None),
+    ("as_id", None),
+    ("vlan_id", None)
 ])
 
 vlan_add_parameters = dict([
-    ("id", None)
+    ("vlan_id", None),
+    ("vrf_name", None)
 ])

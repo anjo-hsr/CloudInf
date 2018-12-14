@@ -17,5 +17,25 @@
                 </route-target>
             </definition>
         </vrf>
+        <router>
+            <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp">
+                <id>{{as_id}}</id>
+                <address-family>
+                    <with-vrf>
+                        <ipv4>
+                            <af-name>unicast</af-name>
+                            <vrf>
+                                <name>{{name}}</name>
+                                <ipv4-unicast>
+                                    <redistribute>
+                                        <connected/>
+                                    </redistribute>
+                                </ipv4-unicast>
+                            </vrf>
+                        </ipv4>
+                    </with-vrf>
+                </address-family>
+            </bgp>
+        </router>
     </native>
 </config>

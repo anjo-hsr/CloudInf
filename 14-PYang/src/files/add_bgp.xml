@@ -1,0 +1,44 @@
+<config>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <router>
+            <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp">
+                <id>{{as_id}}</id>
+                <neighbor>
+                    <id>{{remote_id}}</id>
+                    <remote-as>{{remote_as}}</remote-as>
+                    <update-source>
+                        <Loopback>0</Loopback>
+                    </update-source>
+                </neighbor>
+                <address-family>
+                    <no-vrf>
+                        <vpnv4>
+                            <af-name>unicast</af-name>
+                            <vpnv4-unicast>
+                                <neighbor>
+                                    <id>{{remote_id}}</id>
+                                    <activate/>
+                                    <send-community>
+                                        <send-community-where>extended</send-community-where>
+                                    </send-community>
+                                </neighbor>
+                            </vpnv4-unicast>
+                        </vpnv4>
+                        <vpnv6>
+                            <af-name>unicast</af-name>
+                            <vpnv6-unicast>
+                                <neighbor>
+                                    <id>{{remote_id}}</id>
+                                    <activate/>
+                                    <send-community>
+                                        <send-community-where>extended</send-community-where>
+                                    </send-community>
+                                </neighbor>
+                            </vpnv6-unicast>
+                        </vpnv6>
+                    </no-vrf>
+                </address-family>
+            </bgp>
+        </router>
+    </native>
+</config>

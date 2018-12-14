@@ -1,45 +1,35 @@
 import collections
 
-from src.helpers.constants import connection_parameters, datastores, xml_filters, add_xml_files, delete_xml_files, \
-    vrf_add_parameters, vrf_delete_parameters
+from src.helpers.filters import xml_filters
+from src.helpers.constants import connection_parameters, datastores, add_xml_files, delete_xml_files, \
+    bgp_add_parameters, vlan_add_parameters, vrf_add_parameters, vrf_delete_parameters, clean_connection_parameters, \
+    methods
 
 
 def get_connection():
-    parameters = connection_parameters
+    parameters = connection_parameters.copy()
     print("The default connection setup uses Ciscos sandbox infrastructure")
     choice = input("Would you like to setup your own connection: [N/y]\t") or "N"
     if choice == "y":
-        parameters["host"] = input(
-            "Please enter the hostname or ip: [ios-xe-mgmt.cisco.com]\t") or "ios-xe-mgmt.cisco.com"
-        parameters["port"] = input("Please enter the port number: [10000]\t") or 10000
-        parameters["username"] = input("Please enter the username: [root]\t") or "root"
-        parameters["password"] = input("Please enter the password: [D_Vay!_10&]\t") or "D_Vay!_10&"
 
-    return dict([
-        ("host", parameters["host"]),
-        ("port", parameters["port"]),
-        ("username", parameters["username"]),
-        ("password", parameters["password"])
-    ])
+        parameters = clean_connection_parameters.copy()
+
+        while is_a_parameter_none(parameters):
+            for key in parameters.keys():
+                parameters[key] = input("Please enter the" + key + ":\t")
+
+    return parameters
 
 
-def get_datastore():
-    return select_from_dict(datastores, " datastore", "running").value
-
-
-def get_filter():
-    return select_from_dict(xml_filters, " filter").value
-
-
-def is_a_parameter_none(vrf_parameters):
-    start_boolean = True
-    for key in vrf_parameters.keys():
-        start_boolean = start_boolean and (vrf_parameters[key] is None)
-    return start_boolean
+def display_methods():
+    print("\n\n")
+    for key in methods:
+        print("- " + key)
+    return input("What would you like to do?: \t") or None
 
 
 def get_vrf_add_xml(filename):
-    parameters = vrf_add_parameters
+    parameters = vrf_add_parameters.copy()
 
     while is_a_parameter_none(parameters):
         parameters["name"] = input("Please input the name for the new vrf: \t") or None
@@ -47,26 +37,49 @@ def get_vrf_add_xml(filename):
         parameters["rd_port"] = input("Please input the port of the rd: \t") or None
         parameters["asn_address"] = input("Please input the asn address: \t") or None
         parameters["asn_port"] = input("Please input the asn port: \t") or None
+        parameters["as_id"] = input("Please input the as id: \t") or None
+
+    return replace_variables_in_file(filename, parameters)
+
+
+def get_bgp_add_xml(filename):
+    parameters = bgp_add_parameters.copy()
+
+    while is_a_parameter_none(parameters):
+        parameters["as_id"] = input("Please input the local as id from the router: \t") or None
+        parameters["remote_id"] = input("Please input the remote id from the other bgp router: \t") or None
+        parameters["remote_as"] = input("Please input the remote as from the other bgp router: \t") or None
 
     return replace_variables_in_file(filename, parameters)
 
 
 def get_vrf_delete_xml(filename):
-    parameters = vrf_delete_parameters
+    parameters = vrf_delete_parameters.copy()
 
     while is_a_parameter_none(parameters):
-        parameters["name"] = input("Please input the name for the new vrf: \t") or None
+        parameters["name"] = input("Please input the name from the vrf to delete: \t") or None
+        parameters["as_id"] = input("Please input the current used bgp as id from the vrf: \t") or None
+        parameters["vlan_id"] = input("Please input the current used vlan id: \t") or None
 
     return replace_variables_in_file(filename, parameters)
 
 
 def get_vlan_add_xml(filename):
-    parameters = vlan_add_parameters
+    parameters = vlan_add_parameters.copy()
 
     while is_a_parameter_none(parameters):
-        parameters["id"] = input("Please input the id new vlan: \t") or None
+        parameters["vlan_id"] = input("Please input the id of the new vlan: \t") or None
+        parameters["vrf_name"] = input("Please input the vrf name which will forward the new vlan: \t") or ""
 
     return replace_variables_in_file(filename, parameters)
+
+
+def is_a_parameter_none(vrf_parameters):
+    start_boolean = False
+    for key in vrf_parameters.keys():
+        start_boolean = start_boolean or (vrf_parameters[key] is None)
+    return start_boolean
+
 
 def replace_variables_in_file(filename, parameters):
     with open("./files/" + filename) as xml_file:
@@ -81,6 +94,26 @@ def get_add_configs():
 
     if config_file.key == "vrf":
         return get_vrf_add_xml(config_file.value)
+
+    if config_file.key == "bgp":
+        return get_bgp_add_xml(config_file.value)
+
+    if config_file.key == "vlan":
+        return get_vlan_add_xml(config_file.value)
+
+    exit(1)
+
+
+def get_datastore():
+    return select_from_dict(datastores, " datastore", "running").value
+
+
+def get_filter():
+    filter_xml = select_from_dict(xml_filters, " filter", "")
+    if filter_xml.key != "exit":
+        return filter_xml
+
+    return None
 
 
 def get_delete_configs():

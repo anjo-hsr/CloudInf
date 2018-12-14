@@ -1,24 +1,39 @@
+import os
+
 from src.helpers.connection_handler import check_connection, generate_connection
-from src.helpers.input_handler import get_connection, get_datastore, get_filter
+
+from src.helpers.input_handler import get_connection, get_datastore, display_methods
 from src.helpers.edit_config import add_xml_config, delete_xml_config
-from src.helpers.get_config import get_main_config, get_filtered_config
-from src.helpers.print_config import print_config, print_and_close
+from src.helpers.print_config import print_filtered_config, print_all
+from src.helpers.get_config import get_main_config
+
+
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 m = generate_connection(get_connection())
 check_connection(m)
 datastore = get_datastore()
 
-# main_config = get_main_config(datastore, m)
+repeat = True
+while repeat:
+    cls()
+    chosen_method = display_methods()
+    if chosen_method == "displayAll":
+        main_config = get_main_config(datastore, m)
+        print_all(main_config)
 
-xml_filter = get_filter()
-config = get_filtered_config(datastore, m, xml_filter)
-print_config(config)
+    if chosen_method == "filter":
+        print_filtered_config(m, datastore)
+    if chosen_method == "add":
+        add_xml_config(m, datastore)
+    if chosen_method == "delete":
+        delete_xml_config(m, datastore)
+    if chosen_method == "exit":
+        break
 
-#print_and_close(m, config)
-
-add_xml_config(m, datastore)
-delete_xml_config(m, datastore)
+    repeat = (input("Would you like to repeat? [Y/n]") or "Y") == "Y"
 
 m.close_session()
 exit()
-

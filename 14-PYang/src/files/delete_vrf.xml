@@ -5,5 +5,28 @@
                 <name>{{name}}</name>
             </definition>
         </vrf>
+        <router>
+            <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp">
+                <id>{{as_id}}</id>
+                <address-family>
+                    <with-vrf>
+                        <ipv4>
+                            <af-name>unicast</af-name>
+                            <vrf operation="delete">
+                                <name>{{name}}</name>
+                            </vrf>
+                        </ipv4>
+                    </with-vrf>
+                </address-family>
+            </bgp>
+        </router>
+        <interface>
+            <Vlan operation="delete">
+                <name>{{vlan_id}}</name>
+                <vrf>
+                    <forwarding>{{name}}</forwarding>
+                </vrf>
+            </Vlan>
+        </interface>
     </native>
 </config>
