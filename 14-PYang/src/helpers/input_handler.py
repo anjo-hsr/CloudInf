@@ -60,6 +60,14 @@ def get_vrf_delete_xml(filename):
     return replace_variables_in_file(filename, parameters)
 
 
+def get_vlan_add_xml(filename):
+    parameters = vlan_add_parameters
+
+    while is_a_parameter_none(parameters):
+        parameters["id"] = input("Please input the id new vlan: \t") or None
+
+    return replace_variables_in_file(filename, parameters)
+
 def replace_variables_in_file(filename, parameters):
     with open("./files/" + filename) as xml_file:
         imported_xml_file = xml_file.read()
