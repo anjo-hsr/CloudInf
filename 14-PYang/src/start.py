@@ -13,7 +13,8 @@ def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-m = generate_connection(get_connection())
+connection_parameters = get_connection()
+m = generate_connection(connection_parameters)
 atexit.register(check_and_close_connection, m)
 
 check_connection(m)
@@ -21,6 +22,9 @@ check_connection(m)
 repeat = True
 while repeat:
     cls()
+    repeat = False
+
+    print("Connected with " + connection_parameters["host"] + ":" + str(connection_parameters["port"]) + "\n")
     chosen_method = display_methods()
     if chosen_method == "displayAll":
         main_config = get_main_config(m)
@@ -35,10 +39,16 @@ while repeat:
     if chosen_method == "delete":
         delete_xml_config(m)
 
+    if chosen_method == "changeDevice":
+        connection_parameters = get_connection()
+        m = generate_connection(connection_parameters)
+        repeat = True
+
     if chosen_method == "exit":
         break
 
-    repeat = (input("Would you like to repeat? [Y/n]") or "Y") == "Y"
+    if not repeat:
+        repeat = (input("Would you like to repeat? [Y/n]") or "Y") == "Y"
 
 check_and_close_connection(m)
 exit()

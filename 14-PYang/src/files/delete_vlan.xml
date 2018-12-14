@@ -1,0 +1,9 @@
+<config>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <interface>
+            <Vlan operation="delete">
+                <name>{{vlan_id}}</name>
+            </Vlan>
+        </interface>
+    </native>
+</config>

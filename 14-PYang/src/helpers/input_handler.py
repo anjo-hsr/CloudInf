@@ -14,13 +14,12 @@ def get_connection():
 
         while is_a_parameter_none(parameters):
             for key in parameters.keys():
-                parameters[key] = input("Please enter the" + key + ":\t")
+                parameters[key] = input("Please enter the " + key + ":\t")
 
     return parameters
 
 
 def display_methods():
-    print("\n\n")
     for key in methods:
         print("- " + key)
     return input("What would you like to do?: \t") or None

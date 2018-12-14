@@ -16,15 +16,6 @@ xml_filters = dict([
             </native>
         </filter>
     """),
-    ("get_vrf", """
-        <filter>
-            <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
-                <vrf>
-                <name>{{vrf_name}}</name>
-                </vrf>
-            </native>
-        </filter>
-    """),
     ("bgp", """
         <filter>
             <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">

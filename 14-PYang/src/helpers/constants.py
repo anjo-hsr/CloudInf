@@ -25,7 +25,8 @@ methods = dict([
     ("add", None),
     ("delete", None),
     ("displayAll", None),
-    ("filter", None)
+    ("filter", None),
+    ("changeDevice", None)
 ])
 
 add_xml_files = dict([
@@ -36,6 +37,7 @@ add_xml_files = dict([
 
 delete_xml_files = dict([
     ("bgp", "delete_bgp.xml"),
+    ("vlan", "delete_vlan.xml"),
     ("vrf", "delete_vrf.xml")
 ])
 
@@ -48,19 +50,28 @@ vrf_add_parameters = dict([
     ("as_id", None)
 ])
 
-bgp_add_parameters = dict([
-    ("as_id", None),
-    ("remote_id", None),
-    ("remote_as", None),
-])
-
 vrf_delete_parameters = dict([
     ("name", None),
     ("as_id", None),
     ("vlan_id", None)
 ])
 
+bgp_add_parameters = dict([
+    ("as_id", None),
+    ("remote_id", None),
+    ("remote_as", None),
+])
+
+bgp_delete_parameters = dict([
+    ("as_id", None),
+    ("remote_id", None)
+])
+
 vlan_add_parameters = dict([
     ("vlan_id", None),
     ("vrf_name", None)
+])
+
+vlan_delete_parameters = dict([
+    ("vlan_id", None)
 ])

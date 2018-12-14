@@ -1,0 +1,32 @@
+<config>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <router>
+            <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp">
+                <id>{{as_id}}</id>
+                <neighbor operation="delete">
+                    <id>{{remote_id}}</id>
+                </neighbor>
+                <address-family>
+                    <no-vrf>
+                        <vpnv4>
+                            <af-name>unicast</af-name>
+                            <vpnv4-unicast operation="delete">
+                                <neighbor>
+                                    <id>{{remote_id}}</id>
+                                </neighbor>
+                            </vpnv4-unicast>
+                        </vpnv4>
+                        <vpnv6>
+                            <af-name>unicast</af-name>
+                            <vpnv6-unicast>
+                                <neighbor operation="delete">
+                                    <id>{{remote_id}}</id>
+                                </neighbor>
+                            </vpnv6-unicast>
+                        </vpnv6>
+                    </no-vrf>
+                </address-family>
+            </bgp>
+        </router>
+    </native>
+</config>
