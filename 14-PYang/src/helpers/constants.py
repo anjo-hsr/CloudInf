@@ -44,6 +44,7 @@ xml_filters = dict([
 
 add_xml_files = dict([
     ("vrf", "add_vrf.xml"),
+    ("vlan", "add_vlan.xml"),
     ("bgp_leaf", "add_bgp_leaf.xml"),
     ("bgp_spine", "add_bgp_spine.xml")
 ])
@@ -62,4 +63,8 @@ vrf_add_parameters = dict([
 
 vrf_delete_parameters = dict([
     ("name", None)
+])
+
+vlan_add_parameters = dict([
+    ("id", None)
 ])
