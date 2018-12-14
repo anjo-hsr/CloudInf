@@ -1,12 +1,12 @@
 import collections
-import xmltodict
 
-from src.helpers.constants import connection_parameters, datastores, xml_filters, xml_files, vrf_parameters
+from src.helpers.constants import connection_parameters, datastores, xml_filters, add_xml_files, delete_xml_files, \
+    vrf_add_parameters, vrf_delete_parameters
 
 
 def get_connection():
     parameters = connection_parameters
-
+    print("The default connection setup uses Ciscos sandbox infrastructure")
     choice = input("Would you like to setup your own connection: [N/y]\t") or "N"
     if choice == "y":
         parameters["host"] = input(
@@ -24,11 +24,11 @@ def get_connection():
 
 
 def get_datastore():
-    return select_from_dict(datastores, "datastore", "running").value
+    return select_from_dict(datastores, " datastore", "running").value
 
 
 def get_filter():
-    return select_from_dict(xml_filters, "filter").value
+    return select_from_dict(xml_filters, " filter").value
 
 
 def is_a_parameter_none(vrf_parameters):
@@ -39,7 +39,7 @@ def is_a_parameter_none(vrf_parameters):
 
 
 def get_vrf_add_xml(filename):
-    parameters = vrf_parameters
+    parameters = vrf_add_parameters
 
     while is_a_parameter_none(parameters):
         parameters["name"] = input("Please input the name for the new vrf: \t") or None
@@ -48,22 +48,38 @@ def get_vrf_add_xml(filename):
         parameters["asn_address"] = input("Please input the asn address: \t") or None
         parameters["asn_port"] = input("Please input the asn port: \t") or None
 
+    return replace_variables_in_file(filename, parameters)
+
+
+def get_vrf_delete_xml(filename):
+    parameters = vrf_delete_parameters
+
+    while is_a_parameter_none(parameters):
+        parameters["name"] = input("Please input the name for the new vrf: \t") or None
+
+    return replace_variables_in_file(filename, parameters)
+
+
+def replace_variables_in_file(filename, parameters):
     with open("./files/" + filename) as xml_file:
         imported_xml_file = xml_file.read()
         for key in parameters.keys():
             imported_xml_file = imported_xml_file.replace("{{" + str(key) + "}}", parameters[key])
-        vrf_file = xmltodict.parse(imported_xml_file)
-
-    print(vrf_file)
+    return imported_xml_file
 
 
 def get_add_configs():
-    config_file = select_from_dict(xml_files, "config file")
+    config_file = select_from_dict(add_xml_files, "n add config file")
 
     if config_file.key == "vrf":
-        get_vrf_add_xml(config_file.value)
+        return get_vrf_add_xml(config_file.value)
 
-    return
+
+def get_delete_configs():
+    config_file = select_from_dict(delete_xml_files, " delete config file")
+
+    if config_file.key == "vrf":
+        return get_vrf_delete_xml(config_file.value)
 
 
 def select_from_dict(selected_dict, selection_type, default=""):
@@ -74,7 +90,7 @@ def select_from_dict(selected_dict, selection_type, default=""):
         try:
             for key in selected_dict.keys():
                 print("- " + key)
-            key = input("Please select a " + selection_type + " from the list above: [" + default + "]\t") or default
+            key = input("Please select a" + selection_type + " from the list above: [" + default + "]\t") or default
             value = selected_dict[key]
         except KeyError:
             print("\nPlease try again with these keys:")

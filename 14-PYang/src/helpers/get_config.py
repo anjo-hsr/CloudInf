@@ -1,4 +1,4 @@
-def get_config(source, m):
+def get_main_config(source, m):
     return m.get_config(source=source)
 
 

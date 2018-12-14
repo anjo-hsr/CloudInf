@@ -1,0 +1,9 @@
+<config>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <vrf>
+            <definition operation="delete">
+                <name>{{name}}</name>
+            </definition>
+        </vrf>
+    </native>
+</config>

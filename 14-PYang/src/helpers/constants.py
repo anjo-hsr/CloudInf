@@ -1,9 +1,17 @@
 connection_parameters = dict({
-    ("host", "ios-xe-mgmt.cisco.com"),
-    ("port", 10000),
-    ("username", "root"),
-    ("password", "D_Vay!_10&")
+    ("host", "SW03-pod-9.lab.ins.hsr.ch"),
+    ("port", 830),
+    ("username", "ins"),
+    ("password", "ins@lab")
 })
+
+# TODO - Undo
+# connection_parameters = dict({
+#    ("host", "ios-xe-mgmt.cisco.com"),
+#    ("port", 10000),
+#    ("username", "root"),
+#    ("password", "D_Vay!_10&")
+# })
 
 datastores = dict([
     ("running", "running"),
@@ -34,16 +42,24 @@ xml_filters = dict([
     """)
 ])
 
-xml_files = dict([
+add_xml_files = dict([
     ("vrf", "add_vrf.xml"),
     ("bgp_leaf", "add_bgp_leaf.xml"),
     ("bgp_spine", "add_bgp_spine.xml")
 ])
 
-vrf_parameters = dict([
-        ("name", None),
-        ("rd_address", None),
-        ("rd_port", None),
-        ("asn_address", None),
-        ("asn_port", None),
-    ])
+delete_xml_files = dict([
+    ("vrf", "delete_vrf.xml")
+])
+
+vrf_add_parameters = dict([
+    ("name", None),
+    ("rd_address", None),
+    ("rd_port", None),
+    ("asn_address", None),
+    ("asn_port", None),
+])
+
+vrf_delete_parameters = dict([
+    ("name", None)
+])
