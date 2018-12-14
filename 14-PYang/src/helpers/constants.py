@@ -1,3 +1,11 @@
+# TODO - Undo
+# connection_parameters = dict({
+#    ("host", "ios-xe-mgmt.cisco.com"),
+#    ("port", 10000),
+#    ("username", "root"),
+#    ("password", "D_Vay!_10&")
+# })
+
 connection_parameters = dict({
     ("host", "SW03-pod-9.lab.ins.hsr.ch"),
     ("port", 830),
@@ -11,14 +19,6 @@ clean_connection_parameters = dict({
     ("username", None),
     ("password", None)
 })
-
-# TODO - Undo
-# connection_parameters = dict({
-#    ("host", "ios-xe-mgmt.cisco.com"),
-#    ("port", 10000),
-#    ("username", "root"),
-#    ("password", "D_Vay!_10&")
-# })
 
 methods = dict([
     ("exit", None),
