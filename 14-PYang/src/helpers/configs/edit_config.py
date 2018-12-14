@@ -1,11 +1,10 @@
-from src.helpers.input_handler import get_add_configs, get_delete_configs
+from src.helpers.configs.add_config_handler import get_add_configs
+from src.helpers.configs.delete_config_handler import get_delete_configs
 
 
 def add_xml_config(m, datastore):
     add_config_xml = get_add_configs()
     alter_config(m, datastore, add_config_xml)
-
-
 
 
 def delete_xml_config(m, datastore):
