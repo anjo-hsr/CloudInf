@@ -21,7 +21,7 @@ while repeat:
     cls()
     chosen_method = display_methods()
     if chosen_method == "displayAll":
-        main_config = get_main_config(datastore, m)
+        main_config = get_main_config(m, datastore)
         print_all(main_config)
 
     if chosen_method == "filter":

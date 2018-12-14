@@ -6,6 +6,8 @@ def add_xml_config(m, datastore):
     alter_config(m, datastore, add_config_xml)
 
 
+
+
 def delete_xml_config(m, datastore):
     delete_config_xml = get_delete_configs()
     alter_config(m, datastore, delete_config_xml)
