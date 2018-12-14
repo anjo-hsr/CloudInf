@@ -22,10 +22,10 @@ clean_connection_parameters = dict({
 
 methods = dict([
     ("exit", None),
-    ("displayAll", None),
     ("add", None),
-    ("filter", None),
-    ("delete", None)
+    ("delete", None),
+    ("displayAll", None),
+    ("filter", None)
 ])
 
 datastores = dict([
@@ -37,12 +37,13 @@ datastores = dict([
 
 add_xml_files = dict([
     ("exit", None),
-    ("vrf", "add_vrf.xml"),
+    ("bgp", "add_bgp.xml"),
     ("vlan", "add_vlan.xml"),
-    ("bgp", "add_bgp.xml")
+    ("vrf", "add_vrf.xml")
 ])
 
 delete_xml_files = dict([
+    ("bgp", "delete_bgp.xml"),
     ("vrf", "delete_vrf.xml")
 ])
 

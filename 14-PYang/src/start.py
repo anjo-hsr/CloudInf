@@ -3,8 +3,8 @@ import os
 from src.helpers.connection_handler import check_connection, generate_connection
 
 from src.helpers.input_handler import get_connection, get_datastore, display_methods
-from src.helpers.edit_config import add_xml_config, delete_xml_config
-from src.helpers.print_config import print_filtered_config, print_all
+from src.helpers.configs.edit_config import add_xml_config, delete_xml_config
+from src.helpers.configs.print_config import print_filtered_config, print_all
 from src.helpers.get_config import get_main_config
 
 
