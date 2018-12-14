@@ -21,6 +21,7 @@ clean_connection_parameters = dict({
 })
 
 methods = dict([
+    ("exit", None),
     ("add", None),
     ("delete", None),
     ("displayAll", None),
