@@ -1,6 +1,9 @@
 # README for netconf-script
 ## Dependencies
-Please install the dependencies with the given setup.py script.
+Please install those dependencies manually:  
+ - colorama     (colorful cli)
+ - ncclient     (connection manager for netconf connections)
+ - xmltodict    (convert xml to python dicts)
 
 ## Hints
 Use _Ctrl + d_ to terminate the script. This will close the session correctly. Otherwise the session will be
