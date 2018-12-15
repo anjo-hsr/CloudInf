@@ -22,9 +22,9 @@ If you like to deploy a vrf to a VLAN interface please add a new VLAN.
 3. Repeat if needed
 
 ## Idea
-This script could be used to automate the configuration over multiple netconf compatible devices. The
- user input could be deployed over multiple sessions which points to multiple devices simultaneously.
+Currently only a simplification of the steps are made. With a few changes the user input could be deployed
+ over multiple sessions which points to multiple devices simultaneously. 
 
 ## Inline Documentation
-With the usage of multiple, hopefully good named functions only a few comments were added to the code.
+With the usage of multiple good named functions only a few comments were added to the code.
   [The best comment is a good name for a method or class](https://refactoring.guru/smells/comments).
