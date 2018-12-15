@@ -2,7 +2,7 @@ import collections
 
 from src.helpers.constants import connection_parameters, clean_connection_parameters, methods
 from src.helpers.filters import xml_filters
-from src.helpers.terminal_handler import get_error_string, get_bold_string
+from src.helpers.terminal_handler import get_error_string, get_bold_string, get_info_string
 
 
 def get_connection():
@@ -14,8 +14,10 @@ def get_connection():
         parameters = clean_connection_parameters.copy()
 
         while is_a_parameter_none(parameters):
-            for key in parameters.keys():
-                parameters[key] = input("Please enter the " + key + ":\t")
+            parameters["host"] = input("Please enter the " + get_info_string("host") + ":\t") or None
+            parameters["port"] = input("Please enter the " + get_info_string("port") + ":\t") or None
+            parameters["username"] = input("Please enter the " + get_info_string("username") + ":\t") or None
+            parameters["password"] = input("Please enter the " + get_info_string("password") + ":\t") or None
 
     return parameters
 
@@ -60,7 +62,7 @@ def select_from_dict(selected_dict, selection_type, default=""):
             key = input("Please select a" + selection_type + " from the list above: [" + default + "]\t") or default
             value = selected_dict[key]
         except KeyError:
-            print("\n" +get_error_string("Please try again with these keys:"))
+            print("\n" + get_error_string("Please try again with these keys:"))
             value = None
 
     Map = collections.namedtuple('Map', ['key', 'value'])
