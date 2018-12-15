@@ -28,11 +28,14 @@ def delete_xml_config(m):
 
 def alter_config(m, alter_config_xml):
     # Thanks to Carl Moberg from Cisco:
-    #   - code: https://github.com/cmoberg/netconf-yang-training/blob/master/example-csr1000v/08_cmd-add-mpls-lsp-full.py
-    #   - slided: https://github.com/cmoberg/netconf-yang-training/tree/master/slides
+    #  - code: https://github.com/cmoberg/netconf-yang-training/blob/master/example-csr1000v/08_cmd-add-mpls-lsp-full.py
+    #  - slided: https://github.com/cmoberg/netconf-yang-training/tree/master/slides
 
+    # Check if requirements are done. Otherwise enable candidate-datastore
     assert (":candidate" in m.server_capabilities)
     assert (":validate" in m.server_capabilities)
+
+    # This is best practice to prevent simultaneously edit of the candidate storage.
     with m.locked(target="candidate"):
         m.discard_changes()
         m.edit_config(config=alter_config_xml, target="candidate")
@@ -42,4 +45,4 @@ def alter_config(m, alter_config_xml):
         if "ok" in res.xml:
             print("\nSucessfully altered the config")
         else:
-            print("Error occured with the altering process")
+            print("\nError occured with the altering process")
