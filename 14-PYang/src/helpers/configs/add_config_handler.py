@@ -1,7 +1,8 @@
 import collections
 
 from src.helpers.constants import bgp_add_parameters, vlan_add_parameters, vrf_add_parameters, add_xml_files
-from src.helpers.input_handler import is_a_parameter_none, replace_variables_in_file, select_from_dict
+from src.helpers.input_handler import select_from_dict
+from src.helpers.parameter_handler import is_a_parameter_none, replace_variables_in_file
 from src.helpers.terminal_handler import get_info_string
 
 

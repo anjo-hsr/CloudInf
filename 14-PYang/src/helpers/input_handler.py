@@ -3,6 +3,7 @@ import collections
 from src.helpers.connection_handler import is_netconf_socket_open
 from src.helpers.constants import connection_parameters, clean_connection_parameters, methods
 from src.helpers.filters import xml_filters
+from src.helpers.parameter_handler import is_a_parameter_none
 from src.helpers.terminal_handler import get_error_string, get_bold_string, get_info_string
 
 
@@ -30,21 +31,6 @@ def display_methods():
     for key in methods:
         print("- " + key)
     return input("What would you like to do?: \t") or None
-
-
-def is_a_parameter_none(vrf_parameters):
-    start_boolean = False
-    for key in vrf_parameters.keys():
-        start_boolean = start_boolean or (vrf_parameters[key] is None)
-    return start_boolean
-
-
-def replace_variables_in_file(filename, parameters):
-    with open("./files/" + filename) as xml_file:
-        imported_xml_file = xml_file.read()
-        for key in parameters.keys():
-            imported_xml_file = imported_xml_file.replace("{{" + str(key) + "}}", parameters[key])
-    return imported_xml_file
 
 
 def get_filter():

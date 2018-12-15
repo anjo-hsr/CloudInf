@@ -1,7 +1,8 @@
 import collections
 
 from src.helpers.constants import delete_xml_files, bgp_delete_parameters, vlan_delete_parameters, vrf_delete_parameters
-from src.helpers.input_handler import is_a_parameter_none, replace_variables_in_file, select_from_dict
+from src.helpers.input_handler import select_from_dict
+from src.helpers.parameter_handler import is_a_parameter_none, replace_variables_in_file
 from src.helpers.terminal_handler import get_info_string
 
 
