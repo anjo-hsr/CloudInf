@@ -2,12 +2,12 @@ import collections
 
 from src.helpers.constants import connection_parameters, clean_connection_parameters, methods
 from src.helpers.filters import xml_filters
-from src.helpers.terminal_handler import get_error_string
+from src.helpers.terminal_handler import get_error_string, get_bold_string
 
 
 def get_connection():
     parameters = connection_parameters.copy()
-    print("The default connection setup uses an PE switch.")
+    print("The default connection setup uses the PE switch " + get_bold_string(parameters["host"]) + ".")
     choice = input("Would you like to setup your own connection: [N/y]\t") or "N"
     if choice == "y":
 
@@ -50,7 +50,7 @@ def get_filter():
 
 
 def select_from_dict(selected_dict, selection_type, default=""):
-    print("\n\n")
+    print("\n")
     value = None
     key = None
     while value is None:
@@ -60,7 +60,7 @@ def select_from_dict(selected_dict, selection_type, default=""):
             key = input("Please select a" + selection_type + " from the list above: [" + default + "]\t") or default
             value = selected_dict[key]
         except KeyError:
-            print(get_error_string("\nPlease try again with these keys:"))
+            print("\n" +get_error_string("Please try again with these keys:"))
             value = None
 
     Map = collections.namedtuple('Map', ['key', 'value'])

@@ -3,7 +3,7 @@ from src.helpers.configs.delete_config_handler import get_delete_configs, get_bg
 
 from src.helpers.connection_handler import generate_connection
 from src.helpers.input_handler import get_connection
-from src.helpers.terminal_handler import get_error_string, get_successful_string
+from src.helpers.terminal_handler import get_info_string, get_error_string, get_successful_string
 
 
 def add_xml_config(m):
@@ -16,8 +16,8 @@ def delete_xml_config(m):
     alter_config(m, delete_config.xml)
 
     if delete_config.key == "bgp":
-        print("\nYou have deleted the bgp neighborship from a router."
-              "Now you proceed with deleting the neighborship from the neighbor.")
+        print("\nYou have deleted the bgp neighborship from a router. Now you proceed with deleting the neighborship "
+              "from the neighbor by " + get_info_string("switching the script to another router") + ".")
         delete_config = get_bgp_neighbor_delete_config()
 
         connection_parameters = get_connection()
@@ -44,6 +44,6 @@ def alter_config(m, alter_config_xml):
         res = m.commit()
 
         if "ok" in res.xml:
-            print(get_successful_string("\nSucessfully altered the config"))
+            print("\n" + get_successful_string("Sucessfully altered the config"))
         else:
-            print(get_error_string("\nError occured with the altering process"))
+            print("\n" + get_error_string("Error occured with the altering process"))
