@@ -18,13 +18,19 @@ def delete_xml_config(m):
     if delete_config.key == "bgp":
         print("\nYou have deleted the bgp neighborship from a router. Now you proceed with deleting the neighborship "
               "from the neighbor by " + get_info_string("switching the script to another router") + ".")
-        delete_config = get_bgp_neighbor_delete_config()
+        delete_now = input("Would you like to do that now. [Y/n]")
 
-        connection_parameters = get_connection()
-        m2 = generate_connection(connection_parameters)
+        if delete_now == "Y":
+            print(get_info_string("OK, please enter the new connection parameters to continue:"))
+            connection_parameters = get_connection()
+            m2 = generate_connection(connection_parameters)
 
-        alter_config(m2, delete_config.xml)
-        m2.close_session()
+            print(get_info_string("Now enter the parameters to delete the remote bgp connection:"))
+            delete_config = get_bgp_neighbor_delete_config()
+
+            alter_config(m2, delete_config.xml)
+            print(get_info_string("Closing connection from external router"))
+            m2.close_session()
 
 
 def alter_config(m, alter_config_xml):

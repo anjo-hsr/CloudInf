@@ -1,5 +1,6 @@
 import collections
 
+from src.helpers.connection_handler import is_netconf_socket_open
 from src.helpers.constants import connection_parameters, clean_connection_parameters, methods
 from src.helpers.filters import xml_filters
 from src.helpers.terminal_handler import get_error_string, get_bold_string, get_info_string
@@ -7,9 +8,9 @@ from src.helpers.terminal_handler import get_error_string, get_bold_string, get_
 
 def get_connection():
     parameters = connection_parameters.copy()
-    print("The default connection setup uses the PE switch " + get_bold_string(parameters["host"]) + ".")
+    print("\nThe default connection setup uses the PE switch " + get_bold_string(parameters["host"]) + ".")
     choice = input("Would you like to setup your own connection: [N/y]\t") or "N"
-    if choice == "y":
+    if choice == "y" or not is_netconf_socket_open(parameters.get("host"), parameters.get("port")):
 
         parameters = clean_connection_parameters.copy()
 
@@ -18,6 +19,9 @@ def get_connection():
             parameters["port"] = input("Please enter the " + get_info_string("port") + ":\t") or None
             parameters["username"] = input("Please enter the " + get_info_string("username") + ":\t") or None
             parameters["password"] = input("Please enter the " + get_info_string("password") + ":\t") or None
+
+            if not is_netconf_socket_open(parameters.get("host"), parameters.get("port")):
+                parameters = clean_connection_parameters.copy()
 
     return parameters
 

@@ -10,7 +10,7 @@ def get_successful_string(string_value):
 
 
 def get_error_string(string_value):
-    return Back.LIGHTGREEN_EX + string_value + Back.RESET
+    return Back.LIGHTRED_EX + string_value + Back.RESET
 
 
 def get_bold_string(string_value):
