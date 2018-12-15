@@ -29,7 +29,7 @@ add_xml_files = dict([
 
 delete_xml_files = dict([
     ("bgp", "delete_bgp.xml"),
-    ("vlan", "delete_vlan.xml"),
+    ("vlanWithVrf", "delete_vlan.xml"),
     ("vrf", "delete_vrf.xml")
 ])
 
