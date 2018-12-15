@@ -29,7 +29,7 @@ If you like to deploy a vrf to a VLAN interface please add a new VLAN.
 
 ## Idea
 Currently only a simplification of the steps are made. With a few changes the user input could be deployed
- over multiple sessions which points to multiple devices simultaneously. 
+ over multiple sessions which points to multiple devices simultaneously.
 
 ## Inline Documentation
 With the usage of multiple good named functions only a few comments were added to the code.
