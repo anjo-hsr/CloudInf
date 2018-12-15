@@ -1,6 +1,15 @@
 xml_filters = dict([
     ("exit", None),
-    ("vlan", """
+    ("bgp", """
+        <filter>
+            <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+                <router>
+                    <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp"/>
+                </router>
+            </native>
+        </filter>
+    """),
+    ("vlanWithVrf", """
         <filter>
             <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
                 <interface>
@@ -15,14 +24,5 @@ xml_filters = dict([
                 <vrf/>
             </native>
         </filter>
-    """),
-    ("bgp", """
-        <filter>
-            <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
-                <router>
-                    <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp"/>
-                </router>
-            </native>
-        </filter>
-    """),
+    """)
 ])

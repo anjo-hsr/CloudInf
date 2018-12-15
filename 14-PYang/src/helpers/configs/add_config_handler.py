@@ -59,8 +59,8 @@ def get_add_configs():
     if config_file.key == "bgp":
         return Map("bgp", __get_bgp_add_xml(config_file.value))
 
-    if config_file.key == "vlan":
-        return Map("vlan", __get_vlan_add_xml(config_file.value))
+    if config_file.key == "vlanWithVrf":
+        return Map("vlanWithVrf", __get_vlan_add_xml(config_file.value))
 
     if config_file.key == "vrf":
         return Map("vrf", __get_vrf_add_xml(config_file.value))

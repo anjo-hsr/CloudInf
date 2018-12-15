@@ -23,7 +23,7 @@ methods = dict([
 
 add_xml_files = dict([
     ("bgp", "add_bgp.xml"),
-    ("vlan", "add_vlan.xml"),
+    ("vlanWithVrf", "add_vlan.xml"),
     ("vrf", "add_vrf.xml")
 ])
 
