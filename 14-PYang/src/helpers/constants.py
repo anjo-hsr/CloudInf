@@ -33,6 +33,13 @@ delete_xml_files = dict([
     ("vrf", "delete_vrf.xml")
 ])
 
+filter_xml_files = dict([
+    ("exit", None),
+    ("bgp", "filter_bgp.xml"),
+    ("vlanWithVrf", "filter_vlan.xml"),
+    ("vrf", "filter_vrf.xml")
+])
+
 vrf_add_parameters = dict([
     ("name", None),
     ("rd_address", None),

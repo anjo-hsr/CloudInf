@@ -1,8 +1,7 @@
 import collections
 
 from src.helpers.connection_handler import is_netconf_socket_open
-from src.helpers.constants import connection_parameters, clean_connection_parameters, methods
-from src.helpers.filters import xml_filters
+from src.helpers.constants import connection_parameters, clean_connection_parameters, methods, filter_xml_files
 from src.helpers.parameter_handler import is_a_parameter_none
 from src.helpers.terminal_handler import get_error_string, get_bold_string, get_info_string
 
@@ -34,11 +33,17 @@ def display_methods():
 
 
 def get_filter():
-    filter_xml = select_from_dict(xml_filters, " filter", "")
-    if filter_xml.key != "exit":
-        return filter_xml
+    filter_xml = select_from_dict(filter_xml_files, " filter", "")
 
-    return None
+    Map = collections.namedtuple('Map', ['key', 'value'])
+    key = filter_xml.key
+    value = None
+
+    if filter_xml.key != "exit":
+        with open("./files/" + filter_xml.value) as xml_file:
+            value = xml_file.read()
+
+    return Map(key, value)
 
 
 def select_from_dict(selected_dict, selection_type, default=""):
