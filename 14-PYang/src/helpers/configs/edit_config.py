@@ -38,7 +38,7 @@ def delete_xml_config(m, socket_string):
 
 
 def alter_second_router(alter_type):
-    alter_now = input("Would you like to do that now. [Y/n]")
+    alter_now = input("Would you like to do that now. [Y/n]") or "Y"
     if alter_now != "Y":
         return
 
