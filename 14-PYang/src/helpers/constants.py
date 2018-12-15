@@ -51,8 +51,7 @@ vrf_add_parameters = dict([
 
 vrf_delete_parameters = dict([
     ("name", None),
-    ("as_id", None),
-    ("vlan_id", None)
+    ("as_id", None)
 ])
 
 bgp_add_parameters = dict([

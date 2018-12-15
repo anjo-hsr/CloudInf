@@ -11,7 +11,7 @@ def __get_bgp_delete_xml(filename):
 
     while is_a_parameter_none(parameters):
         parameters["as_id"] = input(
-            "Please enter the current used bgp " + get_info_string("as id") + ": \t") or None
+            "Please enter the current used " + get_info_string("local bgp as id") + ": \t") or None
         parameters["remote_id"] = input(
             "Please enter the " + get_info_string("remote id") + ": \t") or None
 
@@ -25,9 +25,7 @@ def __get_vrf_delete_xml(filename):
         parameters["name"] = input(
             "Please enter the " + get_info_string("name from the vrf") + " to delete: \t") or None
         parameters["as_id"] = input(
-            "Please enter the current used " + get_info_string("bgp as id") + " from the vrf: \t") or None
-        parameters["vlan_id"] = input(
-            "Please enter the current used " + get_info_string("vlan id") + ": \t") or None
+            "Please enter the current used " + get_info_string("local bgp as id") + " from the vrf: \t") or None
 
     return replace_variables_in_file(filename, parameters)
 

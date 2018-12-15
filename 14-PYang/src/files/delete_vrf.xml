@@ -20,13 +20,5 @@
                 </address-family>
             </bgp>
         </router>
-        <interface>
-            <Vlan operation="delete">
-                <name>{{vlan_id}}</name>
-                <vrf>
-                    <forwarding>{{name}}</forwarding>
-                </vrf>
-            </Vlan>
-        </interface>
     </native>
 </config>

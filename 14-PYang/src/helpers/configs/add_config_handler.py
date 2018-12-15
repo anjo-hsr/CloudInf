@@ -13,15 +13,15 @@ def __get_vrf_add_xml(filename):
         parameters["name"] = input(
             "Please enter the " + get_info_string("name from the vrf") + ": \t") or None
         parameters["rd_address"] = input(
-            "Please enter the " + get_info_string("address of the rd") + ": \t") or None
+            "Please enter the " + get_info_string("rd address") + ": \t") or None
         parameters["rd_port"] = input(
-            "Please enter the " + get_info_string("port of the rd") + ": \t") or None
+            "Please enter the " + get_info_string("rd port") + ": \t") or None
         parameters["asn_address"] = input(
-            "Please enter the " + get_info_string("asn address") + ": \t") or None
+            "Please enter the " + get_info_string("route-target export address") + ": \t") or None
         parameters["asn_port"] = input(
-            "Please enter the " + get_info_string("asn port") + ": \t") or None
+            "Please enter the " + get_info_string("route-arget export port") + ": \t") or None
         parameters["as_id"] = input(
-            "Please enter the " + get_info_string("as id") + ": \t") or None
+            "Please enter the " + get_info_string("local bgp as id") + ": \t") or None
 
     return replace_variables_in_file(filename, parameters)
 
