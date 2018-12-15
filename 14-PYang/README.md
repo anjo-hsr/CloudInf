@@ -1,4 +1,7 @@
 # README for netconf-script
+## Dependencies
+Please install the dependencies with the given setup.py script.
+
 ## Hints
 Use _Ctrl + d_ to terminate the script. This will close the session correctly. Otherwise the session will be
  hanging until the timeout run out. With to many open sessions no new connection can be established until
