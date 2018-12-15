@@ -23,8 +23,9 @@ If you like to deploy a vrf to a VLAN interface please add a new VLAN.
 ## Usage
 1. Start the script and configure your connection if needed
 2. Select the needed function by typing a listed key - terminate with exit  
-2.1. If needed select an additional key   
-2.2. If needed type the right arguments into the console window  
+2.1. If needed, select an additional key.  
+2.2. If needed, type the right arguments into the console window.  
+2.3. If needed, start new connection to do the same configuration part on another router as well.  
 3. Repeat if needed
 
 ## Idea
