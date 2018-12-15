@@ -38,7 +38,7 @@ def check_and_close_connection(m):
     if m.connected:
         m.close_session()
         if not m.connected:
-            print("\n\n" + get_successful_string("Session closed."))
+            print("\n\n" + get_info_string("Session closed."))
 
 
 def print_connection(socket_string):
