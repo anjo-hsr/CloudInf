@@ -1,7 +1,7 @@
 import collections
 
-from src.helpers.filters import xml_filters
 from src.helpers.constants import connection_parameters, clean_connection_parameters, methods
+from src.helpers.filters import xml_filters
 
 
 def get_connection():

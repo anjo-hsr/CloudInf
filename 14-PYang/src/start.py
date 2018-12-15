@@ -1,12 +1,11 @@
 import atexit
 import os
 
-from src.helpers.connection_handler import check_connection, check_and_close_connection, generate_connection
-
-from src.helpers.input_handler import get_connection, display_methods
 from src.helpers.configs.edit_config import add_xml_config, delete_xml_config
 from src.helpers.configs.print_config import print_filtered_config, print_all
+from src.helpers.connection_handler import check_connection, check_and_close_connection, generate_connection
 from src.helpers.get_config import get_main_config
+from src.helpers.input_handler import get_connection, display_methods
 
 
 def cls():
@@ -48,7 +47,7 @@ while repeat:
         break
 
     if not repeat:
-        repeat = (input("Would you like to repeat? [Y/n]") or "Y") == "Y"
+        repeat = (input("Would you like to continue? [Y/n]") or "Y") == "Y"
 
 check_and_close_connection(m)
 exit()

@@ -1,8 +1,9 @@
 import xml.dom.minidom as xml
+
 import xmltodict
 
-from src.helpers.input_handler import get_filter
 from src.helpers.get_config import get_filtered_config
+from src.helpers.input_handler import get_filter
 
 
 def print_filtered_config(m):
