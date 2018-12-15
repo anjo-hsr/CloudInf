@@ -3,6 +3,7 @@ from src.helpers.configs.delete_config_handler import get_delete_configs, get_bg
 
 from src.helpers.connection_handler import generate_connection
 from src.helpers.input_handler import get_connection
+from src.helpers.terminal_handler import get_error_string, get_successful_string
 
 
 def add_xml_config(m):
@@ -43,6 +44,6 @@ def alter_config(m, alter_config_xml):
         res = m.commit()
 
         if "ok" in res.xml:
-            print("\nSucessfully altered the config")
+            print(get_successful_string("\nSucessfully altered the config"))
         else:
-            print("\nError occured with the altering process")
+            print(get_error_string("\nError occured with the altering process"))

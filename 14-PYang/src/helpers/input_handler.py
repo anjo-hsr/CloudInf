@@ -2,6 +2,7 @@ import collections
 
 from src.helpers.constants import connection_parameters, clean_connection_parameters, methods
 from src.helpers.filters import xml_filters
+from src.helpers.terminal_handler import get_error_string
 
 
 def get_connection():
@@ -59,7 +60,7 @@ def select_from_dict(selected_dict, selection_type, default=""):
             key = input("Please select a" + selection_type + " from the list above: [" + default + "]\t") or default
             value = selected_dict[key]
         except KeyError:
-            print("\nPlease try again with these keys:")
+            print(get_error_string("\nPlease try again with these keys:"))
             value = None
 
     Map = collections.namedtuple('Map', ['key', 'value'])

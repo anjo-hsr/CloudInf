@@ -1,5 +1,7 @@
 from ncclient import manager
 
+from src.helpers.terminal_handler import get_error_string, get_successful_string
+
 
 def generate_connection(connection_parameters):
     host = connection_parameters["host"]
@@ -12,7 +14,7 @@ def generate_connection(connection_parameters):
 
 def check_connection(m):
     if not m.connected:
-        print("Connection was closed. You were not longer connected to the server")
+        print(get_error_string("Connection was closed. You were not longer connected to the server"))
         exit(1)
 
 
@@ -20,4 +22,4 @@ def check_and_close_connection(m):
     if m.connected:
         m.close_session()
         if not m.connected:
-            print("\n\nSession closed.")
+            print(get_successful_string("\n\nSession closed."))

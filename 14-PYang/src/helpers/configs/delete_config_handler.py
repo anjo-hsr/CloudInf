@@ -1,8 +1,8 @@
 import collections
 
-from src.helpers.color_handler import get_background_colored_string
 from src.helpers.constants import delete_xml_files, bgp_delete_parameters, vlan_delete_parameters, vrf_delete_parameters
 from src.helpers.input_handler import is_a_parameter_none, replace_variables_in_file, select_from_dict
+from src.helpers.terminal_handler import get_info_string
 
 
 def __get_bgp_delete_xml(filename):
@@ -10,9 +10,9 @@ def __get_bgp_delete_xml(filename):
 
     while is_a_parameter_none(parameters):
         parameters["as_id"] = input(
-            "Please enter the current used bgp " + get_background_colored_string("as id") + ": \t") or None
+            "Please enter the current used bgp " + get_info_string("as id") + ": \t") or None
         parameters["remote_id"] = input(
-            "Please enter the " + get_background_colored_string("remote id") + ": \t") or None
+            "Please enter the " + get_info_string("remote id") + ": \t") or None
 
     return replace_variables_in_file(filename, parameters)
 
@@ -22,11 +22,11 @@ def __get_vrf_delete_xml(filename):
 
     while is_a_parameter_none(parameters):
         parameters["name"] = input(
-            "Please enter the " + get_background_colored_string("name from the vrf") + " to delete: \t") or None
+            "Please enter the " + get_info_string("name from the vrf") + " to delete: \t") or None
         parameters["as_id"] = input(
-            "Please enter the current used " + get_background_colored_string("bgp as id") + " from the vrf: \t") or None
+            "Please enter the current used " + get_info_string("bgp as id") + " from the vrf: \t") or None
         parameters["vlan_id"] = input(
-            "Please enter the current used " + get_background_colored_string("vlan id") + ": \t") or None
+            "Please enter the current used " + get_info_string("vlan id") + ": \t") or None
 
     return replace_variables_in_file(filename, parameters)
 
@@ -35,7 +35,7 @@ def __get_vlan_delete_xml(filename):
     parameters = vlan_delete_parameters.copy()
 
     while is_a_parameter_none(parameters):
-        parameters["vlan_id"] = input("Please enter the " + get_background_colored_string("vlan id") + " to delete: \t") or None
+        parameters["vlan_id"] = input("Please enter the " + get_info_string("vlan id") + " to delete: \t") or None
 
     return replace_variables_in_file(filename, parameters)
 

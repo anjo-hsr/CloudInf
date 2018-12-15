@@ -2,9 +2,9 @@ from colorama import Fore
 import xml.dom.minidom as xml
 import xmltodict
 
-from src.helpers.color_handler import get_next_fore_color
 from src.helpers.get_config import get_filtered_config
 from src.helpers.input_handler import get_filter
+from src.helpers.terminal_handler import get_next_fore_color
 
 
 def print_filtered_config(m):
