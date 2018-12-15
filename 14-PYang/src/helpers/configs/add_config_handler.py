@@ -1,9 +1,11 @@
+import collections
+
 from src.helpers.constants import bgp_add_parameters, vlan_add_parameters, vrf_add_parameters, add_xml_files
 from src.helpers.input_handler import is_a_parameter_none, replace_variables_in_file, select_from_dict
 from src.helpers.terminal_handler import get_info_string
 
 
-def get_vrf_add_xml(filename):
+def __get_vrf_add_xml(filename):
     parameters = vrf_add_parameters.copy()
 
     while is_a_parameter_none(parameters):
@@ -23,7 +25,7 @@ def get_vrf_add_xml(filename):
     return replace_variables_in_file(filename, parameters)
 
 
-def get_bgp_add_xml(filename):
+def __get_bgp_add_xml(filename):
     parameters = bgp_add_parameters.copy()
 
     while is_a_parameter_none(parameters):
@@ -37,7 +39,7 @@ def get_bgp_add_xml(filename):
     return replace_variables_in_file(filename, parameters)
 
 
-def get_vlan_add_xml(filename):
+def __get_vlan_add_xml(filename):
     parameters = vlan_add_parameters.copy()
 
     while is_a_parameter_none(parameters):
@@ -51,14 +53,20 @@ def get_vlan_add_xml(filename):
 
 def get_add_configs():
     config_file = select_from_dict(add_xml_files, "n add config file")
-
-    if config_file.key == "vrf":
-        return get_vrf_add_xml(config_file.value)
+    Map = collections.namedtuple('Map', ['key', 'xml'])
 
     if config_file.key == "bgp":
-        return get_bgp_add_xml(config_file.value)
+        return Map("bgp", __get_bgp_add_xml(config_file.value))
 
     if config_file.key == "vlan":
-        return get_vlan_add_xml(config_file.value)
+        return Map("vlan", __get_vlan_add_xml(config_file.value))
 
-    exit(1)
+    if config_file.key == "vrf":
+        return Map("vrf", __get_vrf_add_xml(config_file.value))
+
+    return Map(None, None)
+
+
+def get_bgp_neighbor_add_config():
+    Map = collections.namedtuple('Map', ['key', 'xml'])
+    return Map("bgp", __get_bgp_add_xml(add_xml_files["bgp"]))

@@ -1,7 +1,7 @@
 from ncclient import manager
 import socket
 
-from src.helpers.terminal_handler import get_error_string, get_info_string, get_successful_string
+from src.helpers.terminal_handler import get_bold_string, get_error_string, get_info_string, get_successful_string
 
 
 def is_netconf_socket_open(ip, port):
@@ -39,3 +39,7 @@ def check_and_close_connection(m):
         m.close_session()
         if not m.connected:
             print("\n\n" + get_successful_string("Session closed."))
+
+
+def print_connection(socket_string):
+    print(get_bold_string("Connected with " + socket_string + "\n"))

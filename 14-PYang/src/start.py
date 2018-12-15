@@ -3,10 +3,9 @@ import os
 
 from src.helpers.configs.edit_config import add_xml_config, delete_xml_config
 from src.helpers.configs.print_config import print_filtered_config, print_all
-from src.helpers.connection_handler import check_connection, check_and_close_connection, generate_connection
+from src.helpers.connection_handler import check_connection, check_and_close_connection, generate_connection, print_connection
 from src.helpers.get_config import get_main_config
 from src.helpers.input_handler import get_connection, display_methods
-from src.helpers.terminal_handler import get_bold_string
 
 
 def cls():
@@ -23,9 +22,9 @@ repeat = True
 while repeat:
     cls()
     repeat = False
+    socket_string = connection_parameters["host"] + ":" + str(connection_parameters["port"])
 
-    print(get_bold_string(
-        "Connected with " + connection_parameters["host"] + ":" + str(connection_parameters["port"]) + "\n"))
+    print_connection(socket_string)
     chosen_method = display_methods()
     if chosen_method == "displayAll":
         main_config = get_main_config(m)
@@ -35,10 +34,10 @@ while repeat:
         print_filtered_config(m)
 
     if chosen_method == "add":
-        add_xml_config(m)
+        add_xml_config(m, socket_string)
 
     if chosen_method == "delete":
-        delete_xml_config(m)
+        delete_xml_config(m, socket_string)
 
     if chosen_method == "changeDevice":
         connection_parameters = get_connection()
@@ -51,5 +50,4 @@ while repeat:
     if not repeat:
         repeat = (input("Would you like to continue? [Y/n]") or "Y") == "Y"
 
-check_and_close_connection(m)
 exit()

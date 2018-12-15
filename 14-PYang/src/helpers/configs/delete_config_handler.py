@@ -41,8 +41,9 @@ def __get_vlan_delete_xml(filename):
 
 
 def get_delete_configs():
-    print("\n\n"+
-        get_info_string("Note to delete the vlan first if you'd like to delete a vrf with a newly created vlan for it"))
+    print("\n\n" +
+          get_info_string(
+              "Note to delete the vlan first if you'd like to delete a vrf with a newly created vlan for it"))
     config_file = select_from_dict(delete_xml_files, " delete config file")
     Map = collections.namedtuple('Map', ['key', 'xml'])
 
@@ -54,6 +55,8 @@ def get_delete_configs():
 
     if config_file.key == "vrf":
         return Map("vrf", __get_vrf_delete_xml(config_file.value))
+
+    return Map(None, None)
 
 
 def get_bgp_neighbor_delete_config():

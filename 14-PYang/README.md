@@ -1,8 +1,8 @@
 # README for netconf-script
 ## Hints
-Use Ctrl + d to terminate the script. This will close the session correctly. Otherwise the session will be
+Use _Ctrl + d_ to terminate the script. This will close the session correctly. Otherwise the session will be
  hanging until the timeout run out. With to many open sessions no new connection can be established until
-  the hanging sessions are terminated or closed.  
+ a hanging or open session is terminated or closed.  
 Note to [enable the candidate-datastore](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/169/b_169_programmability_cg/configuring_yang_datamodel.html) to work with this script:
 ```
 enable
