@@ -1,6 +1,5 @@
 # Mininet - VXLAN
 ## Note, this is a Python 2.7 project
----
 Please go through the following steps to start the virtualization:
 1. Start the hosting systems for mininet.
 2. Start the hosting systems for the ryu controller.
